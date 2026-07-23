@@ -16,21 +16,21 @@
 
 ---
 
-## ✨ Features
+## Features
 
 | Feature | Description |
 |---|---|
-| ⏩ **Seek & Scrub** | Click or drag the timeline on any Instagram video |
-| 🔊 **Volume Control** | Set default volume — persists across sessions |
-| ⚡ **Playback Speed** | 0.25× to 2.0× — remembered for all videos |
-| 🔇 **Mute Memory** | Mute preference sticks while scrolling through Reels |
-| ⌨️ **Keyboard Shortcuts** | A/S/D for seek, M for mute, F for fullscreen |
-| 🔁 **Loop Sections** | Set loop start/end with `[` and `]` keys |
-| 📺 **Works Everywhere** | Reels, Stories, Feed, Posts, Profile reels tab |
+| **Seek & Scrub** | Click or drag the timeline on any Instagram video |
+| **Volume Control** | Set default volume — persists across sessions |
+| **Playback Speed** | 0.25× to 2.0× — remembered for all videos |
+| **Mute Memory** | Mute preference sticks while scrolling through Reels |
+| **Keyboard Shortcuts** | A/S/D for seek, M for mute, F for fullscreen |
+| **Loop Sections** | Set loop start/end with `[` and `]` keys |
+| **Works Everywhere** | Reels, Stories, Feed, Posts, Profile reels tab |
 
 <br />
 
-## ⌨️ Keyboard Shortcuts
+## Keyboard Shortcuts
 
 | Key | Action |
 |---|---|
@@ -45,7 +45,7 @@
 
 <br />
 
-## 🚀 Installation
+## Installation
 
 ### From Source (Developer Mode)
 
@@ -67,7 +67,7 @@
 
 <br />
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 reelSlider/
@@ -93,19 +93,19 @@ reelSlider/
 
 <br />
 
-## 🔒 Privacy
+## Privacy
 
 ReelSlider runs **entirely in your browser**. Zero data leaves your device.
 
-- ✅ No accounts
-- ✅ No telemetry or analytics
-- ✅ No external network requests
-- ✅ No subscriptions
-- ✅ All preferences stored locally in `localStorage` and `chrome.storage.local`
+- No accounts
+- No telemetry or analytics
+- No external network requests
+- No subscriptions
+- All preferences stored locally in `localStorage` and `chrome.storage.local`
 
 <br />
 
-## 🛠️ How It Works
+## How It Works
 
 ReelSlider injects a content script into Instagram pages that:
 
@@ -123,17 +123,17 @@ The background service worker (`worker.js`) handles:
 
 <br />
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Feel free to:
 
-- 🐛 [Report bugs](https://github.com/Sumedhvats/reelSlider/issues)
-- 💡 [Request features](https://github.com/Sumedhvats/reelSlider/issues)
-- 🔀 [Submit pull requests](https://github.com/Sumedhvats/reelSlider/pulls)
+- [Report bugs](https://github.com/Sumedhvats/reelSlider/issues)
+- [Request features](https://github.com/Sumedhvats/reelSlider/issues)
+- [Submit pull requests](https://github.com/Sumedhvats/reelSlider/pulls)
 
 <br />
 
-## 📄 License
+## License
 
 MIT © [sumedh](https://github.com/Sumedhvats/)
 
@@ -141,6 +141,6 @@ MIT © [sumedh](https://github.com/Sumedhvats/)
 
 <div align="center">
   <p>
-    <sub>Built with ♥ by <a href="https://github.com/Sumedhvats/">sumedh</a></sub>
+    <sub>Built by <a href="https://github.com/Sumedhvats/">sumedh</a></sub>
   </p>
 </div>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to ReelSlider</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:    #000000;
+      --white:    #ffffff;
+      --dim:      #888888;
+      --muted:    #333333;
+      --border:   #1a1a1a;
+      --surface:  #0d0d0d;
+      --surface2: #111111;
+      --accent:   #ffffff;
+      --glow:     rgba(255, 255, 255, 0.04);
+    }
+
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Hero ─────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 24px 80px;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      width: 88px;
+      height: 88px;
+      border-radius: 20px;
+      margin-bottom: 32px;
+      animation: float 6s ease-in-out infinite;
+      box-shadow: 0 0 80px rgba(255,255,255,0.06);
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .hero-title {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .hero-subtitle {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--dim);
+      max-width: 440px;
+      line-height: 1.6;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 24px;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--dim);
+      letter-spacing: 0.04em;
+    }
+    .hero-badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ── Container ────────────────────────────────────── */
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── Section headers ─────────────────────────────── */
+    .section-title {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      margin-top: 48px;
+    }
+    .section-title:first-child { margin-top: 0; }
+
+    /* ── Feature Grid ────────────────────────────────── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 500px) {
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 20px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .feature-card:hover {
+      border-color: #2a2a2a;
+      background: var(--surface2);
+    }
+    .feature-card.full { grid-column: 1 / -1; }
+    .feature-icon {
+      font-size: 24px;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .feature-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .feature-desc {
+      font-size: 12px;
+      color: var(--dim);
+      line-height: 1.5;
+    }
+
+    /* ── Shortcuts Table ─────────────────────────────── */
+    .shortcuts-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .shortcuts-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .shortcuts-table td {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    .shortcuts-table tr:last-child td { border-bottom: none; }
+    .shortcuts-table .action-cell {
+      font-size: 13px;
+      color: var(--dim);
+    }
+    .shortcuts-table .key-cell {
+      text-align: right;
+    }
+    kbd {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 26px;
+      padding: 0 8px;
+      border: 1px solid var(--muted);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--surface2);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── How it works ─────────────────────────────────── */
+    .steps-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 24px;
+    }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 12px 0;
+    }
+    .step + .step { border-top: 1px solid var(--border); }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .step-text {
+      font-size: 13px;
+      color: var(--dim);
+      line-height: 1.6;
+      padding-top: 4px;
+    }
+    .step-text strong { color: var(--white); font-weight: 600; }
+
+    /* ── Info card ────────────────────────────────────── */
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .info-card p {
+      font-size: 13px;
+      color: var(--dim);
+      line-height: 1.7;
+    }
+    .info-card p + p { margin-top: 12px; }
+    .info-card a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
+    .info-card a:hover { opacity: 0.8; }
+
+    /* ── CTA Button ──────────────────────────────────── */
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .cta-btn:active { transform: translateY(0); }
+    .cta-btn.primary {
+      background: var(--white);
+      color: var(--black);
+    }
+    .cta-btn.secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--muted);
+    }
+    .cta-btn.secondary:hover { border-color: var(--dim); }
+    .cta-btn svg { width: 16px; height: 16px; }
+
+    /* ── Footer ───────────────────────────────────────── */
+    .welcome-footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .welcome-footer p {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      line-height: 1.8;
+    }
+    .welcome-footer a {
+      color: var(--dim);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .welcome-footer a:hover { color: var(--white); }
+    .heart { color: #ef4444; }
+  </style>
+</head>
+<body>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <img class="hero-logo" src="/icons/icon128.png" alt="ReelSlider" />
+    <h1 class="hero-title">REELSLIDER</h1>
+    <p class="hero-subtitle">
+      Real video controls for Instagram. Seek, volume &amp; playback speed on Reels, Stories, Feed&nbsp;&amp;&nbsp;Posts.
+    </p>
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Installed &amp; Active — v1.0.0
+    </div>
+  </section>
+
+  <!-- ── Content ── -->
+  <div class="container">
+
+    <!-- Features -->
+    <div class="section-title">What You Get</div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="feature-icon">⏩</span>
+        <div class="feature-name">Seek &amp; Scrub</div>
+        <div class="feature-desc">Click anywhere on the timeline to jump. Drag to scrub through any video.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔊</span>
+        <div class="feature-name">Volume Control</div>
+        <div class="feature-desc">Set default volume from the popup. Your choice persists across sessions.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⚡</span>
+        <div class="feature-name">Playback Speed</div>
+        <div class="feature-desc">Speed up or slow down. 0.25× to 2.0× — remembered across all videos.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔇</span>
+        <div class="feature-name">Mute Memory</div>
+        <div class="feature-desc">Your mute preference sticks while scrolling. No more re-unmuting every reel.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⌨️</span>
+        <div class="feature-name">Keyboard Shortcuts</div>
+        <div class="feature-desc">Navigate hands-free with A/S/D for seek, M for mute, F for fullscreen.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔁</span>
+        <div class="feature-name">Loop Sections</div>
+        <div class="feature-desc">Set loop points with [ and ] keys. Perfect for learning choreo or music.</div>
+      </div>
+      <div class="feature-card full">
+        <span class="feature-icon">📺</span>
+        <div class="feature-name">Works Everywhere</div>
+        <div class="feature-desc">Reels, Stories, Feed videos, Posts, Profile reels tab — native controls on every Instagram video.</div>
+      </div>
+    </div>
+
+    <!-- Keyboard Shortcuts -->
+    <div class="section-title">Keyboard Shortcuts</div>
+    <div class="shortcuts-card">
+      <table class="shortcuts-table">
+        <tr>
+          <td class="action-cell">Seek backward 5 seconds</td>
+          <td class="key-cell"><kbd>A</kbd></td>
+        </tr>
+        <tr>
+          <td class="action-cell">Play / Pause</td>
+          <td class="key-cell"><kbd>S</kbd></td>
+        </tr>
+        <tr>
+          <td class="action-cell">Seek forward 5 seconds</td>
+          <td class="key-cell"><kbd>D</kbd></td>
+        </tr>
+        <tr>
+          <td class="action-cell">Mute / Unmute</td>
+          <td class="key-cell"><kbd>M</kbd></td>
+        </tr>
+        <tr>
+          <td class="action-cell">Toggle fullscreen</td>
+          <td class="key-cell"><kbd>F</kbd></td>
+        </tr>
+        <tr>
+          <td class="action-cell">Set loop start</td>
+          <td class="key-cell"><kbd>[</kbd></td>
+        </tr>
+        <tr>
+          <td class="action-cell">Set loop end</td>
+          <td class="key-cell"><kbd>]</kbd></td>
+        </tr>
+        <tr>
+          <td class="action-cell">Clear loop</td>
+          <td class="key-cell"><kbd>\</kbd></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- How it works -->
+    <div class="section-title">Getting Started</div>
+    <div class="steps-card">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Open Instagram</strong> — navigate to any Reel, Story, or Feed video. Controls appear automatically.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Click the extension icon</strong> in your toolbar to adjust speed, volume, and mute preferences.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Use keyboard shortcuts</strong> for hands-free control while scrolling through Reels.
+        </div>
+      </div>
+    </div>
+
+    <!-- Privacy -->
+    <div class="section-title">Privacy &amp; Trust</div>
+    <div class="info-card">
+      <p>ReelSlider is <strong>free &amp; open source</strong>. It runs entirely in your browser — no data leaves your device. No accounts, no telemetry, no analytics, no subscriptions.</p>
+      <p>All preferences are stored locally in your browser. Nothing is sent to any server, ever.</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="section-title">Links</div>
+    <div class="cta-row">
+      <a class="cta-btn primary" href="https://github.com/Sumedhvats/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        View on GitHub
+      </a>
+      <a class="cta-btn secondary" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+        Open Instagram →
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="welcome-footer">
+      <p>
+        Built with <span class="heart">♥</span> by <a href="https://github.com/Sumedhvats/" target="_blank" rel="noopener noreferrer">sumedh</a>
+      </p>
+      <p>REELSLIDER v1.0.0</p>
+    </footer>
+
+  </div>
+</body>
+</html>

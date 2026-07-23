@@ -1,0 +1,57 @@
+{
+   "action": {
+      "default_icon": {
+         "16": "icons/icon16.png",
+         "32": "icons/icon32.png"
+      },
+      "default_popup": "src/popup/index.html",
+      "default_title": "ReelSlider"
+   },
+   "background": {
+      "service_worker": "assets/worker.js",
+      "type": "module"
+   },
+   "content_scripts": [ {
+      "js": [ "assets/main.ts-loader-CYxjpPse.js" ],
+      "matches": [ "https://www.instagram.com/*" ],
+      "run_at": "document_start",
+      "world": "MAIN"
+   }, {
+      "js": [ "assets/mute-fix.js" ],
+      "matches": [ "https://www.instagram.com/*" ],
+      "run_at": "document_idle",
+      "world": "MAIN"
+   }, {
+      "css": [ "src/content/toastStack.css" ],
+      "js": [ "assets/bridge.ts-Eb-5j8rm.js" ],
+      "matches": [ "https://www.instagram.com/*" ],
+      "run_at": "document_start"
+   } ],
+   "default_locale": "en",
+   "description": "__MSG_appDesc__",
+   "host_permissions": [ "https://www.instagram.com/*" ],
+   "icons": {
+      "128": "icons/icon128.png",
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+   },
+   "manifest_version": 3,
+   "name": "__MSG_appNameChrome__",
+   "options_page": "src/support/index.html",
+   "permissions": [ "storage", "scripting" ],
+   "version": "1.0.0",
+   "web_accessible_resources": [ {
+      "matches": [ "https://www.instagram.com/*" ],
+      "resources": [
+         "assets/main.ts-CrHNQyXz.js",
+         "assets/constants-nW6bUIy2.js",
+         "assets/links-CpSuQi2Z.js",
+         "assets/featureFlags-BduP1muU.js",
+         "assets/telemetry-BwuTmC1U.js",
+         "assets/bridge.ts-Eb-5j8rm.js",
+         "assets/mute-fix.js"
+      ],
+      "use_dynamic_url": false
+   } ]
+}

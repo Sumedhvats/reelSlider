@@ -1,0 +1,18 @@
+{
+   "appDesc": {
+      "description": "Manifest short description (max 132 chars)",
+      "message": "Contrôles vidéo réels sur Instagram. Cherchez, volume et vitesse sur Reels, Stories, Feed et Posts."
+   },
+   "appNameChrome": {
+      "description": "Extension name on the Chrome Web Store (max 75 chars)",
+      "message": "ReelSlider – Contrôles vidéo pour Instagram"
+   },
+   "appNameEdge": {
+      "description": "Extension name on Microsoft Edge Add-ons (max 75 chars)",
+      "message": "ReelSlider – Contrôles vidéo pour Instagram"
+   },
+   "appNameFirefox": {
+      "description": "Extension name on Firefox Add-ons (AMO)",
+      "message": "ReelSlider – Contrôles vidéo pour Instagram"
+   }
+}

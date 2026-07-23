@@ -1,0 +1,13 @@
+# Old code reference (not part of the extension)
+old code/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Node (if ever used)
+node_modules/

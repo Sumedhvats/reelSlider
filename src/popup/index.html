@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReelSlider</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #000000;
+      --white:   #ffffff;
+      --dim:     #888888;
+      --muted:   #333333;
+      --border:  #1a1a1a;
+      --surface: #0d0d0d;
+      --accent:  #ffffff;
+    }
+
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      width: 320px;
+      min-height: 100px;
+      overflow-x: hidden;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .brand { flex: 1; }
+    .brand-name {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--white);
+      line-height: 1;
+    }
+    .brand-sub {
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--dim);
+      margin-top: 3px;
+      letter-spacing: 0.04em;
+    }
+    .brand-sub a {
+      color: var(--dim);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .brand-sub a:hover { color: var(--white); }
+
+    /* ── Toggle Section ── */
+    .section {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section:last-child { border-bottom: none; }
+    .section-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--dim);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .toggle-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .toggle-status {
+      font-size: 11px;
+      color: var(--dim);
+      margin-top: 2px;
+      transition: color 0.2s;
+    }
+    .toggle-status.on { color: var(--white); }
+
+    /* Switch */
+    .switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      background: var(--muted);
+      border-radius: 12px;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .switch.on { background: var(--white); }
+    .switch .thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--black);
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+      pointer-events: none;
+    }
+    .switch.on .thumb { transform: translateX(20px); background: var(--black); }
+    .switch:not(.on) .thumb { background: var(--dim); }
+
+    /* ── Settings ── */
+    .setting-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+    }
+    .setting-row + .setting-row {
+      border-top: 1px solid var(--border);
+    }
+    .setting-info {}
+    .setting-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--white);
+    }
+    .setting-value {
+      font-size: 10px;
+      color: var(--dim);
+      margin-top: 2px;
+    }
+    .step-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .step-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      border: 1px solid var(--muted);
+      background: transparent;
+      color: var(--white);
+      font-size: 16px;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.15s, background 0.15s;
+      line-height: 1;
+      padding: 0;
+    }
+    .step-btn:hover { border-color: var(--white); background: var(--surface); }
+    .step-val {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--white);
+      min-width: 36px;
+      text-align: center;
+    }
+
+    /* ── Shortcuts ── */
+    .shortcuts-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .shortcut-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .shortcut-row .action {
+      font-size: 11px;
+      color: var(--dim);
+      flex: 1;
+    }
+    .keys {
+      display: flex;
+      gap: 4px;
+    }
+    kbd {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 22px;
+      height: 20px;
+      padding: 0 5px;
+      border: 1px solid var(--muted);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--surface);
+      letter-spacing: 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-brand {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+    .footer-link {
+      font-size: 10px;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.15s;
+    }
+    .footer-link:hover { color: var(--white); }
+    .footer-link svg { width: 12px; height: 12px; }
+
+    /* disabled state */
+    .disabled-overlay {
+      opacity: 0.38;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <img class="logo" src="/icons/icon48.png" alt="" />
+    <div class="brand">
+      <div class="brand-name">REELSLIDER</div>
+      <div class="brand-sub">
+        by <a href="https://github.com/Sumedhvats/" target="_blank" rel="noopener noreferrer">sumedh</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Controller Toggle -->
+  <div class="section">
+    <div class="section-label">Controller</div>
+    <div class="toggle-row">
+      <div>
+        <div class="toggle-title">Video Controls</div>
+        <div class="toggle-status" id="toggle-status">Enabled</div>
+      </div>
+      <button class="switch on" id="main-toggle" aria-pressed="true" aria-label="Enable or disable ReelSlider">
+        <span class="thumb"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Settings -->
+  <div class="section" id="settings-section">
+    <div class="section-label">Preferences</div>
+    <div class="setting-row">
+      <div class="setting-info">
+        <div class="setting-name">Playback Speed</div>
+        <div class="setting-value" id="speed-label">1.0×</div>
+      </div>
+      <div class="step-control">
+        <button class="step-btn" id="speed-dec" aria-label="Decrease speed">−</button>
+        <span class="step-val" id="speed-val">1.0×</span>
+        <button class="step-btn" id="speed-inc" aria-label="Increase speed">+</button>
+      </div>
+    </div>
+    <div class="setting-row">
+      <div class="setting-info">
+        <div class="setting-name">Default Volume</div>
+        <div class="setting-value" id="volume-label">80%</div>
+      </div>
+      <div class="step-control">
+        <button class="step-btn" id="vol-dec" aria-label="Decrease volume">−</button>
+        <span class="step-val" id="vol-val">80%</span>
+        <button class="step-btn" id="vol-inc" aria-label="Increase volume">+</button>
+      </div>
+    </div>
+    <div class="setting-row">
+      <div class="setting-info">
+        <div class="setting-name">Start Muted</div>
+        <div class="setting-value">Apply mute preference on scroll</div>
+      </div>
+      <button class="switch" id="mute-toggle" aria-pressed="false" aria-label="Toggle start muted">
+        <span class="thumb"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Shortcuts -->
+  <div class="section" id="shortcuts-section">
+    <div class="section-label">Keyboard Shortcuts</div>
+    <div class="shortcuts-grid">
+      <div class="shortcut-row">
+        <span class="action">Seek back 5s</span>
+        <div class="keys"><kbd>A</kbd></div>
+      </div>
+      <div class="shortcut-row">
+        <span class="action">Play / Pause</span>
+        <div class="keys"><kbd>S</kbd></div>
+      </div>
+      <div class="shortcut-row">
+        <span class="action">Seek forward 5s</span>
+        <div class="keys"><kbd>D</kbd></div>
+      </div>
+      <div class="shortcut-row">
+        <span class="action">Mute / Unmute</span>
+        <div class="keys"><kbd>M</kbd></div>
+      </div>
+      <div class="shortcut-row">
+        <span class="action">Fullscreen</span>
+        <div class="keys"><kbd>F</kbd></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span class="footer-brand">REELSLIDER v1.0.0</span>
+    <a class="footer-link" href="https://github.com/Sumedhvats/" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      sumedh
+    </a>
+  </footer>
+
+  <script src="/assets/popup.js"></script>
+</body>
+</html>

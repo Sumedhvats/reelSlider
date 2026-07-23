@@ -1,0 +1,23 @@
+Privacy Policy for ReelSlider
+
+Last updated: July 2026
+
+At ReelSlider, accessible from the Chrome Web Store, the privacy of our users is one of our main priorities. This Privacy Policy document outlines what information is processed and how it is handled by the extension.
+
+1. Data Collection and Usage
+ReelSlider does NOT collect, store, or transmit any user data, personally identifiable information, browsing history, or behavioral metrics. 
+All interactions, settings, and preferences are executed entirely inside your local browser.
+
+2. Storage Permission
+ReelSlider uses the browser's local extension storage (chrome.storage) solely to persist your player preferences (such as default volume level, preferred playback speed, mute state, and looping points). This data is kept locally on your machine and is never shared, transferred, or transmitted to any external servers.
+
+3. Scripting & Host Permissions
+The extension requests host permissions for "https://www.instagram.com/*" and "scripting" to overlay video controls (timeline seek bar, speed menu, volume control) and listen for keyboard shortcuts on Instagram pages. The extension does not inspect, read, or modify data on any other websites.
+
+4. Third-Party Sharing
+Since we do not collect any data, we do not sell, trade, or transfer any information to third parties.
+
+5. Contact
+If you have any questions or suggestions regarding this privacy policy, feel free to contact us at:
+GitHub Repository: https://github.com/Sumedhvats/reelSlider/issues
+Portfolio: https://svats.me/

@@ -11,3 +11,7 @@ Thumbs.db
 
 # Node (if ever used)
 node_modules/
+
+# Chrome Store Listing Assets & Zip Packages
+store-assets/
+*.zip

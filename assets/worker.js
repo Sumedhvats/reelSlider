@@ -194,10 +194,14 @@ function initDefaults() {
 }
 
 // ── Lifecycle ──────────────────────────────────────────────
-chrome.runtime.onInstalled.addListener(() => {
-  console.info(LOG, 'installed');
+chrome.runtime.onInstalled.addListener((details) => {
+  console.info(LOG, 'installed', details.reason);
   initDefaults();
   injectAll(true);
+
+  if (details.reason === 'install') {
+    chrome.tabs.create({ url: chrome.runtime.getURL('src/support/index.html') });
+  }
 });
 
 chrome.runtime.onStartup.addListener(() => {

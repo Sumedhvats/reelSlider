@@ -40,7 +40,7 @@
    "name": "__MSG_appNameChrome__",
    "options_page": "src/support/index.html",
    "permissions": [ "storage", "scripting" ],
-   "version": "1.0.0",
+   "version": "1.1.0",
    "web_accessible_resources": [ {
       "matches": [ "https://www.instagram.com/*" ],
       "resources": [

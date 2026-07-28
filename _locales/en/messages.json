@@ -1,7 +1,7 @@
 {
    "appDesc": {
       "description": "Manifest short description (max 132 chars)",
-      "message": "Add real seek, speed, volume & loop controls to Instagram Reels, Stories & Feed. Free & open-source."
+      "message": "Seek, speed, volume, daily limit timer & loop controls for Instagram Reels, Stories & Feed."
    },
    "appNameChrome": {
       "description": "Extension name on the Chrome Web Store (max 75 chars)",

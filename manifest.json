@@ -22,6 +22,10 @@
       "run_at": "document_idle",
       "world": "MAIN"
    }, {
+      "js": [ "assets/reels-timer.js" ],
+      "matches": [ "https://www.instagram.com/*" ],
+      "run_at": "document_idle"
+   }, {
       "css": [ "src/content/toastStack.css" ],
       "js": [ "assets/bridge.ts-Eb-5j8rm.js" ],
       "matches": [ "https://www.instagram.com/*" ],
@@ -40,7 +44,7 @@
    "name": "__MSG_appNameChrome__",
    "options_page": "src/support/index.html",
    "permissions": [ "storage", "scripting" ],
-   "version": "1.1.0",
+   "version": "1.2.0",
    "web_accessible_resources": [ {
       "matches": [ "https://www.instagram.com/*" ],
       "resources": [
@@ -50,7 +54,8 @@
          "assets/featureFlags-BduP1muU.js",
          "assets/telemetry-BwuTmC1U.js",
          "assets/bridge.ts-Eb-5j8rm.js",
-         "assets/mute-fix.js"
+         "assets/mute-fix.js",
+         "assets/reels-timer.js"
       ],
       "use_dynamic_url": false
    } ]

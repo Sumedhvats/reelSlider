@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/manifest-v3-1a1a1a?style=flat-square&labelColor=000" alt="Manifest V3" />
   <img src="https://img.shields.io/badge/chrome-extension-1a1a1a?style=flat-square&logo=googlechrome&logoColor=fff&labelColor=000" alt="Chrome Extension" />
   <img src="https://img.shields.io/badge/license-MIT-1a1a1a?style=flat-square&labelColor=000" alt="MIT License" />
-  <img src="https://img.shields.io/badge/version-1.0.0-1a1a1a?style=flat-square&labelColor=000" alt="Version 1.0.0" />
+  <img src="https://img.shields.io/badge/version-1.2.0-1a1a1a?style=flat-square&labelColor=000" alt="Version 1.2.0" />
 </div>
 
 <br />
@@ -24,6 +24,7 @@
 | **Volume Control** | Set default volume — persists across sessions |
 | **Playback Speed** | 0.25× to 2.0× — remembered for all videos |
 | **Mute Memory** | Mute preference sticks while scrolling through Reels |
+| **Daily Instagram Limit** | Digital Wellbeing cap (e.g. 1h/day) with auto-pause & break screen |
 | **Keyboard Shortcuts** | A/S/D for seek, M for mute, F for fullscreen |
 | **Loop Sections** | Set loop start/end with `[` and `]` keys |
 | **Works Everywhere** | Reels, Stories, Feed, Posts, Profile reels tab |
@@ -82,7 +83,8 @@ reelSlider/
 │   ├── links-CpSuQi2Z.js     # Extension metadata
 │   ├── featureFlags-BduP1muU.js
 │   ├── telemetry-BwuTmC1U.js  # Telemetry (no-op)
-│   └── bridge.ts-Eb-5j8rm.js  # ISOLATED↔MAIN world bridge
+│   ├── bridge.ts-Eb-5j8rm.js  # ISOLATED↔MAIN world bridge
+│   └── reels-timer.js         # Daily limit & wellbeing tracker
 ├── src/
 │   ├── popup/index.html       # Popup UI
 │   ├── support/index.html     # Welcome / About page

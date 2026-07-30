@@ -1,4 +1,15 @@
 {
+   "manifest_version": 3,
+   "name": "__MSG_appNameChrome__",
+   "description": "__MSG_appDesc__",
+   "version": "1.3.0",
+   "default_locale": "en",
+   "browser_specific_settings": {
+      "gecko": {
+         "id": "reelslider@sumedhvats",
+         "strict_min_version": "109.0"
+      }
+   },
    "action": {
       "default_icon": {
          "16": "icons/icon16.png",
@@ -8,19 +19,17 @@
       "default_title": "ReelSlider"
    },
    "background": {
-      "service_worker": "assets/worker.js",
+      "scripts": [ "assets/worker.js" ],
       "type": "module"
    },
    "content_scripts": [ {
       "js": [ "assets/main.ts-loader-CYxjpPse.js" ],
       "matches": [ "https://www.instagram.com/*" ],
-      "run_at": "document_start",
-      "world": "MAIN"
+      "run_at": "document_start"
    }, {
       "js": [ "assets/mute-fix.js" ],
       "matches": [ "https://www.instagram.com/*" ],
-      "run_at": "document_idle",
-      "world": "MAIN"
+      "run_at": "document_idle"
    }, {
       "js": [ "assets/reels-timer.js" ],
       "matches": [ "https://www.instagram.com/*" ],
@@ -31,23 +40,19 @@
       "matches": [ "https://www.instagram.com/*" ],
       "run_at": "document_start"
    } ],
-   "default_locale": "en",
-   "description": "__MSG_appDesc__",
    "host_permissions": [ "https://www.instagram.com/*" ],
    "icons": {
-      "128": "icons/icon128.png",
       "16": "icons/icon16.png",
       "32": "icons/icon32.png",
-      "48": "icons/icon48.png"
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
    },
-   "manifest_version": 3,
-   "name": "__MSG_appNameChrome__",
    "options_page": "src/support/index.html",
    "permissions": [ "storage", "scripting" ],
-   "version": "1.3.0",
    "web_accessible_resources": [ {
       "matches": [ "https://www.instagram.com/*" ],
       "resources": [
+         "assets/main.ts-loader-CYxjpPse.js",
          "assets/main.ts-CrHNQyXz.js",
          "assets/constants-nW6bUIy2.js",
          "assets/links-CpSuQi2Z.js",
@@ -56,7 +61,6 @@
          "assets/bridge.ts-Eb-5j8rm.js",
          "assets/mute-fix.js",
          "assets/reels-timer.js"
-      ],
-      "use_dynamic_url": false
+      ]
    } ]
 }

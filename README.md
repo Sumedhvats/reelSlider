@@ -8,8 +8,9 @@
 
   <img src="https://img.shields.io/badge/manifest-v3-1a1a1a?style=flat-square&labelColor=000" alt="Manifest V3" />
   <img src="https://img.shields.io/badge/chrome-extension-1a1a1a?style=flat-square&logo=googlechrome&logoColor=fff&labelColor=000" alt="Chrome Extension" />
+  <img src="https://img.shields.io/badge/firefox-extension-1a1a1a?style=flat-square&logo=firefoxbrowser&logoColor=fff&labelColor=000" alt="Firefox Extension" />
   <img src="https://img.shields.io/badge/license-MIT-1a1a1a?style=flat-square&labelColor=000" alt="MIT License" />
-  <img src="https://img.shields.io/badge/version-1.2.0-1a1a1a?style=flat-square&labelColor=000" alt="Version 1.2.0" />
+  <img src="https://img.shields.io/badge/version-1.3.0-1a1a1a?style=flat-square&labelColor=000" alt="Version 1.3.0" />
 </div>
 
 <br />
@@ -48,17 +49,14 @@
 
 ## Installation
 
-### From Source (Developer Mode)
+### 1. Google Chrome
 
 1. **Clone** this repository:
    ```bash
    git clone https://github.com/Sumedhvats/reelSlider.git
    ```
 
-2. Open **Chrome** and navigate to:
-   ```
-   chrome://extensions
-   ```
+2. Open **Chrome** and navigate to `chrome://extensions`
 
 3. Enable **Developer mode** (top-right toggle)
 
@@ -66,14 +64,31 @@
 
 5. Open [instagram.com](https://www.instagram.com) — controls appear automatically
 
+### 2. Mozilla Firefox
+
+1. Open **Firefox** and navigate to `about:debugging#/runtime/this-firefox`
+
+2. Click **Load Temporary Add-on...**
+
+3. Select the `manifest.json` file inside the `firefox/` directory (`reelSlider/firefox/manifest.json`)
+
+4. Open [instagram.com](https://www.instagram.com) — controls appear automatically
+
+
 <br />
 
 ## Project Structure
 
 ```
 reelSlider/
-├── manifest.json              # Extension manifest (MV3)
-├── assets/
+├── manifest.json              # Chrome extension manifest (MV3)
+├── firefox/                   # Standalone Firefox extension folder
+│   ├── manifest.json          # Firefox-specific manifest (MV3)
+│   ├── assets/                # Firefox-adapted background & content scripts
+│   ├── src/                   # Popup & support pages
+│   ├── icons/                 # Extension icons
+│   └── _locales/              # Internationalization
+├── assets/                    # Chrome background & content scripts
 │   ├── worker.js              # Background service worker
 │   ├── popup.js               # Popup UI logic
 │   ├── mute-fix.js            # Mute preference fix
@@ -85,7 +100,7 @@ reelSlider/
 │   ├── telemetry-BwuTmC1U.js  # Telemetry (no-op)
 │   ├── bridge.ts-Eb-5j8rm.js  # ISOLATED↔MAIN world bridge
 │   └── reels-timer.js         # Daily limit & wellbeing tracker
-├── src/
+├── src/                       # Extension pages
 │   ├── popup/index.html       # Popup UI
 │   ├── support/index.html     # Welcome / About page
 │   └── content/toastStack.css # Toast notification styles

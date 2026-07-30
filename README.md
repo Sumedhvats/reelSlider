@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/chrome-extension-1a1a1a?style=flat-square&logo=googlechrome&logoColor=fff&labelColor=000" alt="Chrome Extension" />
   <img src="https://img.shields.io/badge/firefox-extension-1a1a1a?style=flat-square&logo=firefoxbrowser&logoColor=fff&labelColor=000" alt="Firefox Extension" />
   <img src="https://img.shields.io/badge/license-MIT-1a1a1a?style=flat-square&labelColor=000" alt="MIT License" />
-  <img src="https://img.shields.io/badge/version-1.3.0-1a1a1a?style=flat-square&labelColor=000" alt="Version 1.3.0" />
+  <img src="https://img.shields.io/badge/version-1.3.5-1a1a1a?style=flat-square&labelColor=000" alt="Version 1.3.5" />
 </div>
 
 <br />

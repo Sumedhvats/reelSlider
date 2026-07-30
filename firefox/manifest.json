@@ -1,56 +1,87 @@
 {
-   "manifest_version": 3,
-   "name": "__MSG_appNameChrome__",
-   "description": "__MSG_appDesc__",
-   "version": "1.3.0",
-   "default_locale": "en",
-   "browser_specific_settings": {
-      "gecko": {
-         "id": "reelslider@sumedhvats",
-         "strict_min_version": "128.0",
-         "data_collection_permissions": {
-            "required": ["none"]
-         }
-      }
-   },
-   "action": {
-      "default_icon": {
-         "16": "icons/icon16.png",
-         "32": "icons/icon32.png"
-      },
-      "default_popup": "src/popup/index.html",
-      "default_title": "ReelSlider"
-   },
-   "background": {
-      "scripts": [ "assets/worker.js" ],
-      "type": "module"
-   },
-   "content_scripts": [ {
-      "js": [ "assets/reels-timer.js" ],
-      "matches": [ "https://www.instagram.com/*" ],
-      "run_at": "document_idle"
-   }, {
-      "css": [ "src/content/toastStack.css" ],
-      "js": [ "assets/bridge.ts-Eb-5j8rm.js" ],
-      "matches": [ "https://www.instagram.com/*" ],
-      "run_at": "document_start"
-   } ],
-   "host_permissions": [ "https://www.instagram.com/*" ],
-   "icons": {
+  "action": {
+    "default_icon": {
       "16": "icons/icon16.png",
-      "32": "icons/icon32.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
-   },
-   "options_page": "src/support/index.html",
-   "permissions": [ "storage", "scripting" ],
-   "web_accessible_resources": [ {
-      "matches": [ "https://www.instagram.com/*" ],
+      "32": "icons/icon32.png"
+    },
+    "default_popup": "src/popup/index.html",
+    "default_title": "ReelSlider"
+  },
+  "background": {
+    "scripts": [
+      "assets/index.ts-daE2WO6W.js"
+    ],
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "assets/locks.ts-D6hLRc4D.js",
+        "assets/mute-fix.ts-1YPqpD4P.js"
+      ],
+      "matches": [
+        "https://www.instagram.com/*"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "js": [
+        "assets/reels-timer.ts-B6SDxcWZ.js"
+      ],
+      "matches": [
+        "https://www.instagram.com/*"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "js": [
+        "assets/bridge.ts-CWoBh4Sy.js"
+      ],
+      "matches": [
+        "https://www.instagram.com/*"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "default_locale": "en",
+  "description": "__MSG_appDesc__",
+  "host_permissions": [
+    "https://www.instagram.com/*"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "manifest_version": 3,
+  "name": "__MSG_appNameChrome__",
+  "options_page": "src/support/index.html",
+  "permissions": [
+    "storage",
+    "scripting"
+  ],
+  "version": "1.3.5",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "reelslider@svats.me",
+      "strict_min_version": "109.0"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "https://www.instagram.com/*"
+      ],
       "resources": [
-         "assets/main-bundle.js",
-         "assets/mute-fix.js",
-         "assets/bridge.ts-Eb-5j8rm.js",
-         "assets/reels-timer.js"
+        "assets/locks.ts-D6hLRc4D.js",
+        "assets/mute-fix.ts-1YPqpD4P.js",
+        "assets/reels-timer.ts-B6SDxcWZ.js",
+        "assets/main.ts-nxEGTtCr.js",
+        "assets/constants-DtcWMCm4.js",
+        "assets/bridge.ts-CWoBh4Sy.js"
       ]
-   } ]
+    }
+  ]
 }

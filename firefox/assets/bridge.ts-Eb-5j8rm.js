@@ -1,2 +1,0 @@
-(function(){const getApi=()=>typeof browser!=='undefined'?browser:chrome;window.addEventListener(`message`,e=>{if(e.source===window){const api=getApi();if(e.data?.type===`__REELS_SCRUBBER_TELEMETRY__`)try{api.runtime.sendMessage({type:`telemetry`,payload:e.data.payload})}catch{}if(e.data?.type===`__REELS_SCRUBBER_PREVIEW_STATE__`)try{api.runtime.sendMessage({type:`preview-state`,payload:e.data.payload})}catch{}}});})()
-

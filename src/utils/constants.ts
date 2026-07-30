@@ -1,0 +1,51 @@
+export const config = {
+  remoteConfigUrl: '',
+  telemetryUrl: ''
+};
+
+export const ONE_DAY_MINS = 1440;
+export const MATCH_PATTERN_INSTAGRAM = 'https://www.instagram.com/*';
+
+export const DOM_ATTRIBUTES = {
+  REELS_SCRUBBER_ENABLED: '__IG_REELS_SCRUBBER_ENABLED__',
+  SCRUBBER_ACTIVE: 'data-reels-scrubber-active',
+  SCRUBBER_PREV_STYLE: 'data-reels-scrubber-prev-style',
+  SCRUBBER_STYLE_TOUCHED: 'data-reels-scrubber-style-touched',
+  PRO_FEATURES: '__IG_REELS_SCRUBBER_PRO_FEATURES__',
+  PRO_INSTANCE: '__IG_REELS_SCRUBBER_INSTANCE__',
+  PRO: '__IG_REELS_SCRUBBER_PRO__',
+};
+
+export const DOM_CLASSES = {
+  TOGGLE: 'ig-reels-scrubber-toggle',
+};
+
+export const PREF_KEYS = {
+  SCRUBBER_ENABLED: 'reels_scrubber_enabled',
+  PATCHED_COUNT: 'reels_scrubber_patched_count',
+  FEED_MUTED: 'reels_scrubber_feed_muted_pref',
+  SPEED: 'reels_scrubber_speed_pref',
+  AUTO_SCROLL: 'reels_scrubber_auto_scroll_pref',
+  VOLUME: 'reels_scrubber_volume_pref',
+  SUPPORT_BANNER_DISMISSED: 'reels_scrubber_support_banner_dismissed',
+  SUPPORT_SNOOZED_MILESTONE: 'reels_scrubber_support_snoozed_milestone',
+  TELEMETRY_OPT_OUT: 'reels_scrubber_telemetry_opt_out',
+  LAST_FAILURE_REPORT_AT: 'reels_scrubber_last_failure_report_at',
+  PRO_INSTANCE_ID: 'reels_scrubber_pro_instance_id',
+  PRO_STATUS: 'reels_scrubber_pro_status',
+  PRO_FEATURES: 'reels_scrubber_pro_features',
+  PRO_PREVIEW_BASELINE: 'reels_scrubber_pro_preview_baseline',
+  PRO_PREVIEW_NOTICE_SHOWN: 'reels_scrubber_pro_preview_notice_shown',
+  PRO_PREVIEW_WELCOME_SHOWN: 'reels_scrubber_pro_preview_welcome_shown',
+  PRO_PREVIEW_STATE: 'reels_scrubber_pro_preview_state',
+  PRO_PREVIEW_PREFS_RESET: 'reels_scrubber_pro_preview_prefs_reset',
+  PRO_EVER_LICENSED: 'reels_scrubber_pro_ever_licensed',
+  PRO_ANNOUNCE_DISMISSED: 'reels_scrubber_pro_announce_dismissed',
+  PRO_ANNOUNCE_IMPRESSIONS: 'reels_scrubber_pro_announce_impressions',
+  PRO_ANNOUNCE_SNOOZED_AT: 'reels_scrubber_pro_announce_snoozed_at',
+  LAST_CARD_AT: 'reels_scrubber_last_card_at',
+};
+
+export const MESSAGES = {
+  LICENSE_CHECK: 'reels-scrubber-license-check',
+};

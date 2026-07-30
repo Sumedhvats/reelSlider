@@ -1,0 +1,55 @@
+=========================================
+Chrome Web Store Privacy & Compliance Form Contents
+=========================================
+
+1. SINGLE PURPOSE
+-----------------------------------------
+[Single purpose description] (Max 1000 characters)
+-----------------------------------------
+ReelSlider adds playback controls (timeline seeking, speed adjustment, custom volume, and loops) to Instagram videos (Reels, Feed posts, and Stories) via a simple extension overlay and custom keyboard shortcuts.
+
+-----------------------------------------
+2. PERMISSION JUSTIFICATIONS
+-----------------------------------------
+[storage justification] (Max 1000 characters)
+-----------------------------------------
+The storage permission is required to save and persist the user's preferences, including default playback speed, default volume level, mute state, and custom looping toggles, so they are applied automatically across video sessions.
+
+-----------------------------------------
+[scripting justification] (Max 1000 characters)
+-----------------------------------------
+The scripting permission is required to inject content scripts into the active Instagram video page to programmatically interface with HTML5 video elements for play/pause toggle, volume adjustments, timeline seeking, and speed modification.
+
+-----------------------------------------
+[Host permission justification] (Max 1000 characters)
+-----------------------------------------
+Access to host "https://www.instagram.com/*" is necessary to detect Instagram video players on Reels, Feed posts, Stories, and Profiles, and to overlay the custom timeline slider and control bar elements onto the video player containers.
+
+-----------------------------------------
+3. REMOTE CODE
+-----------------------------------------
+[Are you using remote code?]
+-----------------------------------------
+Select: "No, I am not using Remote code"
+
+-----------------------------------------
+4. DATA USAGE & DISCLOSURES
+-----------------------------------------
+[What user data do you plan to collect?]
+-----------------------------------------
+Uncheck ALL boxes. This extension does not collect, record, or transmit any user data.
+
+-----------------------------------------
+[Certifications]
+-----------------------------------------
+Check/Certify all three boxes:
+[X] I do not sell or transfer user data to third parties, outside of the approved use cases.
+[X] I do not use or transfer user data for purposes that are unrelated to my item's single purpose.
+[X] I do not use or transfer user data to determine creditworthiness or for lending purposes.
+
+-----------------------------------------
+5. PRIVACY POLICY
+-----------------------------------------
+[Privacy policy URL]
+-----------------------------------------
+Since this extension requests host permissions, a Privacy Policy URL is required by Google. You can host the contents of "Privacy Policy.txt" on your website (https://svats.me/privacy) or in your GitHub repository and paste the link here.

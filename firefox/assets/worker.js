@@ -178,12 +178,51 @@ function injectPrefs(tabId, prefs, force = false) {
   }).catch(() => {});
 }
 
+// Track tabs where main bundle is already injected to avoid double-injection
+const injectedTabs = new Set();
+
+/**
+ * Inject the main bundle into a tab's MAIN world.
+ * Firefox doesn't support "world": "MAIN" in manifest content_scripts,
+ * and Instagram's CSP blocks inline script.textContent injection.
+ * So we use chrome.scripting.executeScript with world: 'MAIN' and files
+ * which bypasses page CSP entirely (supported in Firefox 128+).
+ */
+function injectMainBundle(tabId) {
+  if (injectedTabs.has(tabId)) return;
+  injectedTabs.add(tabId);
+
+  chrome.scripting.executeScript({
+    target: { tabId },
+    files: ['assets/main-bundle.js'],
+    world: 'MAIN',
+  }).catch((err) => {
+    console.warn(LOG, 'main-bundle injection failed:', err);
+    injectedTabs.delete(tabId);
+  });
+}
+
+/**
+ * Inject the mute-fix script into a tab's MAIN world.
+ */
+function injectMuteFix(tabId) {
+  chrome.scripting.executeScript({
+    target: { tabId },
+    files: ['assets/mute-fix.js'],
+    world: 'MAIN',
+  }).catch((err) => {
+    console.warn(LOG, 'mute-fix injection failed:', err);
+  });
+}
+
 async function injectAll(force = false) {
   const prefs = await getPrefs();
   chrome.tabs.query({ url: [IG_MATCH] }, (tabs) => {
     tabs.forEach((tab) => {
       if (tab.id && isInstagramTab(tab.url)) {
+        injectMainBundle(tab.id);
         injectPrefs(tab.id, prefs, force);
+        injectMuteFix(tab.id);
       }
     });
   });
@@ -215,8 +254,19 @@ chrome.runtime.onStartup.addListener(() => {
 
 chrome.tabs.onUpdated.addListener((tabId, info, tab) => {
   if (info.status === 'loading' && isInstagramTab(tab.url)) {
-    getPrefs().then((prefs) => injectPrefs(tabId, prefs, false));
+    // Clear injected state so bundle re-injects on navigation
+    injectedTabs.delete(tabId);
   }
+  if (info.status === 'complete' && isInstagramTab(tab.url)) {
+    injectMainBundle(tabId);
+    getPrefs().then((prefs) => injectPrefs(tabId, prefs, false));
+    injectMuteFix(tabId);
+  }
+});
+
+// Clean up when tab closes
+chrome.tabs.onRemoved.addListener((tabId) => {
+  injectedTabs.delete(tabId);
 });
 
 // Re-inject all tabs when prefs change (e.g. popup toggle)

@@ -9,19 +9,8 @@
 (function () {
   'use strict';
 
-  // Inject into MAIN world if executed in isolated content script environment
-  const getRuntime = () => (typeof browser !== 'undefined' && browser.runtime) ? browser.runtime : (typeof chrome !== 'undefined' && chrome.runtime ? chrome.runtime : null);
-  const runtime = getRuntime();
-
-  if (runtime && runtime.getURL && !window.__REELS_SCRUBBER_MUTE_FIX_MAIN_WORLD__) {
-    try {
-      const script = document.createElement('script');
-      script.src = runtime.getURL('assets/mute-fix.js');
-      (document.head || document.documentElement).appendChild(script);
-      script.onload = () => script.remove();
-      return;
-    } catch (e) {}
-  }
+  // Guard against double-execution
+  if (window.__REELS_SCRUBBER_MUTE_FIX_MAIN_WORLD__) return;
   window.__REELS_SCRUBBER_MUTE_FIX_MAIN_WORLD__ = true;
 
   const MUTE_PREF_KEY = 'reels_scrubber_feed_muted_pref';

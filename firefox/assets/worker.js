@@ -189,10 +189,10 @@ const injectedTabs = new Set();
  * which bypasses page CSP entirely (supported in Firefox 128+).
  */
 function injectMainBundle(tabId) {
-  if (injectedTabs.has(tabId)) return;
+  if (injectedTabs.has(tabId)) return Promise.resolve();
   injectedTabs.add(tabId);
 
-  chrome.scripting.executeScript({
+  return chrome.scripting.executeScript({
     target: { tabId },
     files: ['assets/main-bundle.js'],
     world: 'MAIN',
@@ -218,9 +218,11 @@ function injectMuteFix(tabId) {
 async function injectAll(force = false) {
   const prefs = await getPrefs();
   chrome.tabs.query({ url: [IG_MATCH] }, (tabs) => {
-    tabs.forEach((tab) => {
+    tabs.forEach(async (tab) => {
       if (tab.id && isInstagramTab(tab.url)) {
-        injectMainBundle(tab.id);
+        // IMPORTANT: Wait for main bundle to load and register its event
+        // listener BEFORE dispatching prefs (which fires the toggle event).
+        await injectMainBundle(tab.id);
         injectPrefs(tab.id, prefs, force);
         injectMuteFix(tab.id);
       }
@@ -258,9 +260,11 @@ chrome.tabs.onUpdated.addListener((tabId, info, tab) => {
     injectedTabs.delete(tabId);
   }
   if (info.status === 'complete' && isInstagramTab(tab.url)) {
-    injectMainBundle(tabId);
-    getPrefs().then((prefs) => injectPrefs(tabId, prefs, false));
-    injectMuteFix(tabId);
+    // Wait for main bundle to load before injecting prefs
+    injectMainBundle(tabId).then(() => {
+      getPrefs().then((prefs) => injectPrefs(tabId, prefs, false));
+      injectMuteFix(tabId);
+    });
   }
 });
 

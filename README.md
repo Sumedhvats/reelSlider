@@ -49,31 +49,40 @@
 
 ## Installation
 
-### 1. Google Chrome
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- npm (v9 or higher)
+
+### Build Instructions
 
 1. **Clone** this repository:
    ```bash
    git clone https://github.com/Sumedhvats/reelSlider.git
+   cd reelSlider
    ```
 
-2. Open **Chrome** and navigate to `chrome://extensions`
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-3. Enable **Developer mode** (top-right toggle)
+3. **Build the extension**:
+   ```bash
+   npm run build           # Builds the Chrome extension into dist/
+   npm run build:firefox   # Builds the Firefox extension into firefox/
+   ```
 
-4. Click **Load unpacked** and select the cloned `reelSlider` folder
+### Loading in Google Chrome
 
-5. Open [instagram.com](https://www.instagram.com) — controls appear automatically
+1. Open **Chrome** and navigate to `chrome://extensions`
+2. Enable **Developer mode** (top-right toggle)
+3. Click **Load unpacked** and select the `dist` folder inside the cloned directory
 
-### 2. Mozilla Firefox
+### Loading in Mozilla Firefox
 
 1. Open **Firefox** and navigate to `about:debugging#/runtime/this-firefox`
-
 2. Click **Load Temporary Add-on...**
-
-3. Select the `manifest.json` file inside the `firefox/` directory (`reelSlider/firefox/manifest.json`)
-
-4. Open [instagram.com](https://www.instagram.com) — controls appear automatically
-
+3. Select the `manifest.json` file inside the `firefox/` directory
 
 <br />
 
@@ -81,31 +90,25 @@
 
 ```
 reelSlider/
+├── src/                       # TypeScript source code
+│   ├── background/            # Background service worker
+│   ├── content/               # Content scripts injected into Instagram
+│   │   ├── main/              # Core video patching & logic (MAIN world)
+│   │   ├── bridge.ts          # ISOLATED ↔ MAIN world bridge
+│   │   ├── locks.ts           # Prototype locks for media elements
+│   │   ├── mute-fix.ts        # Enforces mute state
+│   │   └── reels-timer.ts     # Digital Wellbeing tracker
+│   ├── popup/                 # Popup UI interface
+│   ├── support/               # Options/Support page
+│   └── utils/                 # Shared constants & helpers
+├── _locales/                  # Internationalization (i18n)
+├── icons/                     # Extension icons
+├── dist/                      # Compiled Chrome extension (created after build)
+├── firefox/                   # Compiled Firefox extension (created after build)
 ├── manifest.json              # Chrome extension manifest (MV3)
-├── firefox/                   # Standalone Firefox extension folder
-│   ├── manifest.json          # Firefox-specific manifest (MV3)
-│   ├── assets/                # Firefox-adapted background & content scripts
-│   ├── src/                   # Popup & support pages
-│   ├── icons/                 # Extension icons
-│   └── _locales/              # Internationalization
-├── assets/                    # Chrome background & content scripts
-│   ├── worker.js              # Background service worker
-│   ├── popup.js               # Popup UI logic
-│   ├── mute-fix.js            # Mute preference fix
-│   ├── main.ts-CrHNQyXz.js   # Content script (video patching)
-│   ├── main.ts-loader-CYxjpPse.js
-│   ├── constants-nW6bUIy2.js  # Storage keys & config
-│   ├── links-CpSuQi2Z.js     # Extension metadata
-│   ├── featureFlags-BduP1muU.js
-│   ├── telemetry-BwuTmC1U.js  # Telemetry (no-op)
-│   ├── bridge.ts-Eb-5j8rm.js  # ISOLATED↔MAIN world bridge
-│   └── reels-timer.js         # Daily limit & wellbeing tracker
-├── src/                       # Extension pages
-│   ├── popup/index.html       # Popup UI
-│   ├── support/index.html     # Welcome / About page
-│   └── content/toastStack.css # Toast notification styles
-├── icons/                     # Extension icons (16/32/48/128)
-└── _locales/                  # Internationalization
+├── package.json               # Build dependencies & scripts
+├── tsconfig.json              # TypeScript configuration
+└── vite.config.ts             # Vite bundler configuration
 ```
 
 <br />

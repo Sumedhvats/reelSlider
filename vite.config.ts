@@ -7,7 +7,7 @@ const isFirefox = process.env.BROWSER === 'firefox';
 if (isFirefox) {
   (manifest as any).browser_specific_settings = {
     gecko: {
-      id: "reelslider@svats.me",
+      id: "reelslider@sumedhvats",
       strict_min_version: "109.0"
     }
   };

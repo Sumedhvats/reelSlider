@@ -49,11 +49,15 @@
 
 ## Installation
 
-### Prerequisites
-- [Node.js](https://nodejs.org/) (v18 or higher)
-- npm (v9 or higher)
+### Method 1: Download Pre-built (Recommended)
+1. Go to the [Releases page](https://github.com/Sumedhvats/reelSlider/releases).
+2. Download the `.zip` file for your browser (Chrome or Firefox).
+3. Extract the `.zip` file.
+4. Follow the loading instructions below based on your browser.
 
-### Build Instructions
+### Method 2: Build from Source
+
+**Prerequisites:** [Node.js](https://nodejs.org/) (v18+) and npm (v9+)
 
 1. **Clone** this repository:
    ```bash
@@ -76,13 +80,13 @@
 
 1. Open **Chrome** and navigate to `chrome://extensions`
 2. Enable **Developer mode** (top-right toggle)
-3. Click **Load unpacked** and select the `dist` folder inside the cloned directory
+3. Click **Load unpacked** and select the extracted folder (or the `dist` folder if building from source)
 
 ### Loading in Mozilla Firefox
 
 1. Open **Firefox** and navigate to `about:debugging#/runtime/this-firefox`
 2. Click **Load Temporary Add-on...**
-3. Select the `manifest.json` file inside the `firefox/` directory
+3. Select the `manifest.json` file inside the extracted folder (or the `firefox/` directory if building from source)
 
 <br />
 

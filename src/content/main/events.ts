@@ -9,6 +9,7 @@ import {
 import { DOM_CLASSES } from '../../utils/constants';
 import { isSupportedPage, isFeedOrReels } from './routes';
 import { getVideoContext, isEditable } from './dom';
+import { injectPostDownloadButtons } from './download';
 let observer: MutationObserver | null = null;
 let timeouts: number[] = [];
 
@@ -21,6 +22,7 @@ export function runPatchLoop() {
   const allVideos = Array.from(document.querySelectorAll('video'));
   if (allVideos.length === 0) {
     rollbackAll();
+    injectPostDownloadButtons();
     return;
   }
 
@@ -46,6 +48,8 @@ export function runPatchLoop() {
       rollbackVideo(el);
     }
   });
+
+  injectPostDownloadButtons();
 }
 
 function rollbackAll() {

@@ -49,12 +49,11 @@ function buildFilename(video?: HTMLVideoElement): string {
 }
 
 /**
- * Walk up a React fiber tree looking for a video URL in component props.
- * Instagram's React components store the CDN video_url in their memoizedProps.
+ * Walk up a React fiber tree looking for a media URL in component props.
  */
-function extractFromReactFiber(video: HTMLVideoElement): string | null {
+function extractFromReactFiber(element: HTMLElement): string | null {
   // Find React fiber key on the DOM element or its ancestors (up to 15 levels)
-  let curr: HTMLElement | null = video;
+  let curr: HTMLElement | null = element;
   let fiberKey = undefined;
   
   for (let i = 0; i < 15 && curr; i++) {
@@ -79,9 +78,16 @@ function extractFromReactFiber(video: HTMLVideoElement): string | null {
       if (typeof props.videoUrl === 'string' && props.videoUrl.startsWith('http')) {
         return props.videoUrl;
       }
+      if (typeof props.display_url === 'string' && props.display_url.startsWith('http')) {
+        return props.display_url;
+      }
       // video_versions array (Instagram API format: [{url, width, height}, ...])
       if (Array.isArray(props.video_versions) && props.video_versions.length > 0) {
         const best = props.video_versions[0];
+        if (best?.url && typeof best.url === 'string') return best.url;
+      }
+      if (props.image_versions2?.candidates && Array.isArray(props.image_versions2.candidates) && props.image_versions2.candidates.length > 0) {
+        const best = props.image_versions2.candidates[0];
         if (best?.url && typeof best.url === 'string') return best.url;
       }
       // src prop if not blob
@@ -95,6 +101,9 @@ function extractFromReactFiber(video: HTMLVideoElement): string | null {
           if (typeof nested.video_url === 'string' && nested.video_url.startsWith('http')) {
             return nested.video_url;
           }
+          if (typeof nested.display_url === 'string' && nested.display_url.startsWith('http')) {
+            return nested.display_url;
+          }
           if (Array.isArray(nested.video_versions) && nested.video_versions.length > 0) {
             const best = nested.video_versions[0];
             if (best?.url && typeof best.url === 'string') return best.url;
@@ -104,10 +113,13 @@ function extractFromReactFiber(video: HTMLVideoElement): string | null {
     }
 
     // Also check stateNode for class components
-    if (fiber.stateNode && fiber.stateNode !== video && typeof fiber.stateNode === 'object') {
+    if (fiber.stateNode && fiber.stateNode !== element && typeof fiber.stateNode === 'object') {
       const state = fiber.stateNode.state || fiber.stateNode;
       if (state && typeof state.video_url === 'string' && state.video_url.startsWith('http')) {
         return state.video_url;
+      }
+      if (state && typeof state.display_url === 'string' && state.display_url.startsWith('http')) {
+        return state.display_url;
       }
     }
 
@@ -117,18 +129,25 @@ function extractFromReactFiber(video: HTMLVideoElement): string | null {
 }
 
 /**
- * Deep-scan an object (up to a depth limit) for a video URL string.
+ * Deep-scan an object (up to a depth limit) for a media URL string.
  * Used to search through Instagram's embedded data structures.
  */
-function deepFindVideoUrl(obj: any, depth: number = 0, maxDepth: number = 8): string | null {
+function deepFindMediaUrl(obj: any, depth: number = 0, maxDepth: number = 8): string | null {
   if (depth > maxDepth || !obj || typeof obj !== 'object') return null;
 
   // Direct properties first
   if (typeof obj.video_url === 'string' && obj.video_url.startsWith('http')) {
     return obj.video_url;
   }
+  if (typeof obj.display_url === 'string' && obj.display_url.startsWith('http')) {
+    return obj.display_url;
+  }
   if (Array.isArray(obj.video_versions) && obj.video_versions.length > 0) {
     const best = obj.video_versions[0];
+    if (best?.url && typeof best.url === 'string') return best.url;
+  }
+  if (obj.image_versions2?.candidates && Array.isArray(obj.image_versions2.candidates) && obj.image_versions2.candidates.length > 0) {
+    const best = obj.image_versions2.candidates[0];
     if (best?.url && typeof best.url === 'string') return best.url;
   }
 
@@ -136,16 +155,17 @@ function deepFindVideoUrl(obj: any, depth: number = 0, maxDepth: number = 8): st
   const interestingKeys = [
     'items', 'media', 'clip', 'node', 'shortcode_media', 'graphql',
     'data', 'xdt_shortcode_media', 'video', 'edges', 'edge_media_to_video',
+    'carousel_media', 'image_versions2'
   ];
   for (const key of interestingKeys) {
     if (obj[key]) {
       if (Array.isArray(obj[key])) {
         for (const item of obj[key]) {
-          const found = deepFindVideoUrl(item, depth + 1, maxDepth);
+          const found = deepFindMediaUrl(item, depth + 1, maxDepth);
           if (found) return found;
         }
       } else {
-        const found = deepFindVideoUrl(obj[key], depth + 1, maxDepth);
+        const found = deepFindMediaUrl(obj[key], depth + 1, maxDepth);
         if (found) return found;
       }
     }
@@ -186,7 +206,7 @@ async function fetchVideoUrlFromApi(shortcode: string): Promise<string | null> {
     });
     if (resp.ok) {
       const data = await resp.json();
-      const url = deepFindVideoUrl(data);
+      const url = deepFindMediaUrl(data);
       if (url) return url;
     }
   } catch {}
@@ -199,7 +219,7 @@ async function fetchVideoUrlFromApi(shortcode: string): Promise<string | null> {
     );
     if (resp.ok) {
       const data = await resp.json();
-      const url = deepFindVideoUrl(data);
+      const url = deepFindMediaUrl(data);
       if (url) return url;
     }
   } catch {}
@@ -212,7 +232,7 @@ async function fetchVideoUrlFromApi(shortcode: string): Promise<string | null> {
     });
     if (resp.ok) {
       const data = await resp.json();
-      const url = deepFindVideoUrl(data);
+      const url = deepFindMediaUrl(data);
       if (url) return url;
     }
   } catch {}
@@ -283,7 +303,7 @@ async function extractVideoUrl(video: HTMLVideoElement): Promise<string | null> 
     const win = window as any;
     for (const key of ['__additionalDataLoaded', '__initialData', '_sharedData']) {
       if (win[key] && typeof win[key] === 'object') {
-        const url = deepFindVideoUrl(win[key]);
+        const url = deepFindMediaUrl(win[key]);
         if (url) return url;
       }
     }
@@ -505,4 +525,153 @@ export function removeDownloadButton(container: HTMLElement | null) {
   // Search broadly — the button might be in the action bar, not the video container
   const scope = container.closest('section') ?? container.closest('[role="presentation"]') ?? container.closest('article') ?? container;
   scope.querySelectorAll(`[${DOM_ATTRIBUTES.DOWNLOAD_BUTTON}]`).forEach((el) => el.remove());
+}
+
+async function extractMediaUrl(scope: HTMLElement): Promise<string | null> {
+  // Strategy 1: Find visible video and extract its URL
+  const videos = Array.from(scope.querySelectorAll('video'));
+  let bestVideo: HTMLVideoElement | null = null;
+  for (const v of videos) {
+    const rect = v.getBoundingClientRect();
+    if (rect.left >= -50 && rect.right <= window.innerWidth + 50 && rect.width > 0) {
+      bestVideo = v;
+      break;
+    }
+  }
+  if (bestVideo) {
+    const vUrl = await extractVideoUrl(bestVideo);
+    if (vUrl) return vUrl;
+  }
+
+  // Strategy 2: Find visible image and extract its URL
+  const images = Array.from(scope.querySelectorAll('img'));
+  let bestImg: HTMLImageElement | null = null;
+  let maxArea = 0;
+  
+  for (const img of images) {
+    if (img.width < 100 || img.height < 100) continue; // skip ui icons
+    const rect = img.getBoundingClientRect();
+    if (rect.left < -100 || rect.right > window.innerWidth + 100 || rect.width === 0) continue;
+    
+    const area = rect.width * rect.height;
+    if (area > maxArea) {
+      maxArea = area;
+      bestImg = img;
+    }
+  }
+
+  if (bestImg) {
+    if (bestImg.srcset) {
+      const sources = bestImg.srcset.split(',').map(s => {
+        const parts = s.trim().split(' ');
+        return { url: parts[0], width: parseInt(parts[1] || '0', 10) };
+      });
+      sources.sort((a, b) => b.width - a.width);
+      if (sources.length > 0) return sources[0].url;
+    }
+    return bestImg.src;
+  }
+  
+  // Strategy 3: Try to find URL in React fiber of the scope
+  const fiberUrl = extractFromReactFiber(scope);
+  if (fiberUrl) return fiberUrl;
+  
+  return null;
+}
+
+function buildFilenameFromScope(scope: HTMLElement, url: string): string {
+  let code: string | null = null;
+  const links = scope.querySelectorAll('a[href*="/p/"], a[href*="/reel/"], a[href*="/reels/"]');
+  for (const link of Array.from(links)) {
+    const href = link.getAttribute('href');
+    if (href) {
+      const match = href.match(/\/(?:reel|reels|p)\/([A-Za-z0-9_-]+)/);
+      if (match) {
+        code = match[1];
+        break;
+      }
+    }
+  }
+  if (!code) {
+      const m = location.pathname.match(/\/(?:reel|reels|p)\/([A-Za-z0-9_-]+)/);
+      if (m) code = m[1];
+  }
+
+  const ts = Date.now();
+  const ext = url.includes('.mp4') ? 'mp4' : 'jpg';
+  if (code) return `instagram_${code}_${ts}.${ext}`;
+  return `instagram_media_${ts}.${ext}`;
+}
+
+async function handlePostDownloadClick(scope: HTMLElement, btn: HTMLElement) {
+  setButtonState(btn, 'loading');
+
+  const url = await extractMediaUrl(scope);
+  if (!url) {
+    log('warn', 'Could not extract media URL for download');
+    setButtonState(btn, 'error');
+    return;
+  }
+
+  const filename = buildFilenameFromScope(scope, url);
+  
+  try {
+    requestDownload(url, filename);
+    setTimeout(() => setButtonState(btn, 'success'), 600);
+  } catch (err) {
+    log('warn', 'Download request failed');
+    setButtonState(btn, 'error');
+  }
+}
+
+/**
+ * Periodically check for and inject download buttons in all post action bars.
+ * This is useful for photo posts which don't have a video element to patch.
+ */
+export function injectPostDownloadButtons() {
+  const saveBtns = document.querySelectorAll(
+    'svg[aria-label="Save"], svg[aria-label="Remove"], [aria-label="Save"], [aria-label="Remove"]'
+  );
+
+  for (const el of Array.from(saveBtns)) {
+    const wrapper = el.closest('button') ?? el.closest('[role="button"]');
+    const target = (wrapper ?? el) as HTMLElement;
+    
+    // The action bar is typically a flex row container for the Save button.
+    const parent = target.parentElement;
+    if (!parent) continue;
+
+    // We need the post scope to find the media later
+    const scope = target.closest('article') ?? target.closest('[role="dialog"]') ?? target.closest('section') ?? document.body;
+    
+    // Avoid duplicate injections
+    if (scope.querySelector(`[${DOM_ATTRIBUTES.DOWNLOAD_BUTTON}]`)) continue;
+
+    const btn = document.createElement('div');
+    btn.setAttribute(DOM_ATTRIBUTES.DOWNLOAD_BUTTON, 'true');
+    btn.className = 'reels-scrubber-download-btn';
+    btn.setAttribute('role', 'button');
+    btn.setAttribute('tabindex', '0');
+    btn.innerHTML = DOWNLOAD_ICON_SVG;
+    btn.title = 'Download media';
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      handlePostDownloadClick(scope as HTMLElement, btn);
+    });
+
+    btn.addEventListener('mousedown', (e) => e.stopPropagation());
+    btn.addEventListener('mouseup', (e) => e.stopPropagation());
+
+    parent.insertBefore(btn, target);
+    
+    if (window.getComputedStyle(parent).display !== 'flex') {
+      parent.style.setProperty('display', 'flex', 'important');
+      parent.style.setProperty('align-items', 'center', 'important');
+    }
+    
+    btn.style.setProperty('margin-bottom', '0', 'important');
+    btn.style.setProperty('margin-right', '16px', 'important');
+  }
 }

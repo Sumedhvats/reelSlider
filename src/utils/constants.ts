@@ -14,6 +14,7 @@ export const DOM_ATTRIBUTES = {
   PRO_FEATURES: '__IG_REELS_SCRUBBER_PRO_FEATURES__',
   PRO_INSTANCE: '__IG_REELS_SCRUBBER_INSTANCE__',
   PRO: '__IG_REELS_SCRUBBER_PRO__',
+  DOWNLOAD_BUTTON: 'data-reels-scrubber-download-btn',
 };
 
 export const DOM_CLASSES = {
@@ -48,4 +49,5 @@ export const PREF_KEYS = {
 
 export const MESSAGES = {
   LICENSE_CHECK: 'reels-scrubber-license-check',
+  DOWNLOAD_VIDEO: '__REELS_SCRUBBER_DOWNLOAD__',
 };

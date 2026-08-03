@@ -7,7 +7,8 @@ import {
   isSizeInvalid, fixPosition, getSnapshot, applySnapshot, isFullscreenElement
 } from './dom';
 import { setMutedWithoutLock, syncStoryMute, loadGlobalFeedMuted } from './audio';
-import { injectStoryControlsCSS, injectTagsLiftCSS } from './ui';
+import { injectStoryControlsCSS, injectTagsLiftCSS, injectDownloadCSS } from './ui';
+import { injectDownloadButton, removeDownloadButton } from './download';
 
 export const stateMachine = new StateMachine();
 
@@ -97,7 +98,11 @@ function applyVideoSizing(video: HTMLVideoElement, context: VideoContext) {
   const isFullscreen = isFullscreenElement(video);
   if (context === 'story-viewer') {
     injectStoryControlsCSS();
-    video.removeAttribute('data-reels-scrubber-story-layout');
+    if (isFullscreen) {
+      video.removeAttribute('data-reels-scrubber-story-layout');
+    } else {
+      video.setAttribute('data-reels-scrubber-story-layout', 'true');
+    }
     video.style.setProperty('object-fit', isFullscreen ? 'contain' : 'cover', 'important');
     video.style.setProperty('display', 'block', 'important');
     video.style.setProperty('pointer-events', 'auto', 'important');
@@ -207,6 +212,10 @@ function applyStyles(video: HTMLVideoElement, container: HTMLElement, context: V
   if (context === 'story-viewer') {
     cleanupStorySpecific(video);
   }
+
+  // Inject download button
+  injectDownloadCSS();
+  injectDownloadButton(video, container);
 }
 
 function resetVideoAttributes(video: HTMLVideoElement) {
@@ -228,6 +237,9 @@ function resetVideoAttributes(video: HTMLVideoElement) {
   video.style.removeProperty('overflow');
   video.removeAttribute('data-reels-scrubber-story-layout');
   document.getElementById('reels-scrubber-story-controls')?.remove();
+  // Remove download button
+  const dlContainer = video.closest('[style*="--x-height"]') ?? video.closest('article') ?? video.parentElement;
+  removeDownloadButton(dlContainer as HTMLElement | null);
 }
 
 export function patchVideo(video: HTMLVideoElement) {

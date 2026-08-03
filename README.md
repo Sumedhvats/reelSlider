@@ -12,7 +12,7 @@
   </a>
   <img src="https://img.shields.io/badge/firefox-extension-1a1a1a?style=flat-square&logo=firefoxbrowser&logoColor=fff&labelColor=000" alt="Firefox Extension" />
   <img src="https://img.shields.io/badge/license-MIT-1a1a1a?style=flat-square&labelColor=000" alt="MIT License" />
-  <img src="https://img.shields.io/badge/version-1.3.5-1a1a1a?style=flat-square&labelColor=000" alt="Version 1.3.5" />
+  <img src="https://img.shields.io/badge/version-1.4.0-1a1a1a?style=flat-square&labelColor=000" alt="Version 1.4.0" />
 </div>
 
 <br />
@@ -25,6 +25,7 @@
 |---|---|
 | **Seek & Scrub** | Click or drag the timeline on any Instagram video |
 | **Volume Control** | Set default volume — persists across sessions |
+| **Video Downloading** | Instantly download high-quality videos straight to your device |
 | **Playback Speed** | 0.25× to 2.0× — remembered for all videos |
 | **Mute Memory** | Mute preference sticks while scrolling through Reels |
 | **Daily Instagram Limit** | Digital Wellbeing cap (e.g. 1h/day) with auto-pause & break screen |

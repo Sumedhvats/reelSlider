@@ -196,5 +196,29 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
     sendResponse({ ok: true, source: 'ReelSlider background' });
     return true;
   }
+  if (msg?.type === 'download-video') {
+    const { url, filename } = msg.payload || {};
+    if (url && typeof url === 'string') {
+      chrome.downloads.download(
+        {
+          url,
+          filename: filename || `instagram_video_${Date.now()}.mp4`,
+          conflictAction: 'uniquify',
+        },
+        (downloadId) => {
+          if (chrome.runtime.lastError) {
+            console.warn(LOG, 'Download failed:', chrome.runtime.lastError.message);
+            sendResponse({ ok: false, error: chrome.runtime.lastError.message });
+          } else {
+            console.info(LOG, 'Download started, id:', downloadId);
+            sendResponse({ ok: true, downloadId });
+          }
+        }
+      );
+    } else {
+      sendResponse({ ok: false, error: 'Missing URL' });
+    }
+    return true; // keep the message channel open for async sendResponse
+  }
   return false;
 });

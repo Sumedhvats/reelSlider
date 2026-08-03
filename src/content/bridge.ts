@@ -20,6 +20,14 @@ import mainUrl from './main.ts?script&module';
           });
         } catch {}
       }
+      if (e.data?.type === '__REELS_SCRUBBER_DOWNLOAD__') {
+        try {
+          chrome.runtime.sendMessage({
+            type: 'download-video',
+            payload: e.data.payload,
+          });
+        } catch {}
+      }
     }
   });
 

@@ -50,13 +50,21 @@ function buildFilename(video?: HTMLVideoElement): string {
  * Instagram's React components store the CDN video_url in their memoizedProps.
  */
 function extractFromReactFiber(video: HTMLVideoElement): string | null {
-  // Find React fiber key on the DOM element
-  const fiberKey = Object.keys(video).find(
-    (k) => k.startsWith('__reactFiber$') || k.startsWith('__reactInternalInstance$')
-  );
-  if (!fiberKey) return null;
+  // Find React fiber key on the DOM element or its ancestors (up to 5 levels)
+  let curr: HTMLElement | null = video;
+  let fiberKey = undefined;
+  
+  for (let i = 0; i < 5 && curr; i++) {
+    fiberKey = Object.keys(curr).find(
+      (k) => k.startsWith('__reactFiber$') || k.startsWith('__reactInternalInstance$')
+    );
+    if (fiberKey) break;
+    curr = curr.parentElement;
+  }
+  
+  if (!fiberKey || !curr) return null;
 
-  let fiber = (video as any)[fiberKey];
+  let fiber = (curr as any)[fiberKey];
   // Walk up the fiber tree (max 30 levels) looking for video URL data
   for (let i = 0; i < 30 && fiber; i++) {
     const props = fiber.memoizedProps || fiber.pendingProps;

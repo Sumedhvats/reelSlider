@@ -9,7 +9,7 @@
   },
   "background": {
     "scripts": [
-      "assets/index.ts-daE2WO6W.js"
+      "assets/index.ts-DIhxxs9B.js"
     ],
     "type": "module"
   },
@@ -36,7 +36,7 @@
     },
     {
       "js": [
-        "assets/bridge.ts-CWoBh4Sy.js"
+        "assets/bridge.ts-9ERPDZ_5.js"
       ],
       "matches": [
         "https://www.instagram.com/*"
@@ -60,12 +60,13 @@
   "options_page": "src/support/index.html",
   "permissions": [
     "storage",
-    "scripting"
+    "scripting",
+    "downloads"
   ],
-  "version": "1.3.5",
+  "version": "1.4.0",
   "browser_specific_settings": {
     "gecko": {
-      "id": "reelslider@svats.me",
+      "id": "reelslider@sumedhvats",
       "strict_min_version": "109.0"
     }
   },
@@ -78,9 +79,9 @@
         "assets/locks.ts-D6hLRc4D.js",
         "assets/mute-fix.ts-1YPqpD4P.js",
         "assets/reels-timer.ts-B6SDxcWZ.js",
-        "assets/main.ts-nxEGTtCr.js",
-        "assets/constants-DtcWMCm4.js",
-        "assets/bridge.ts-CWoBh4Sy.js"
+        "assets/main.ts-BgMxh8TS.js",
+        "assets/constants-Dic-b4Xh.js",
+        "assets/bridge.ts-9ERPDZ_5.js"
       ]
     }
   ]

@@ -63,7 +63,7 @@
     "scripting",
     "downloads"
   ],
-  "version": "1.4.2",
+  "version": "1.4.3",
   "browser_specific_settings": {
     "gecko": {
       "id": "reelslider@sumedhvats",
@@ -79,7 +79,7 @@
         "assets/locks.ts-D6hLRc4D.js",
         "assets/mute-fix.ts-1YPqpD4P.js",
         "assets/reels-timer.ts-B6SDxcWZ.js",
-        "assets/main.ts-BhEbX5Wv.js",
+        "assets/main.ts-EAx_xB40.js",
         "assets/constants-Dic-b4Xh.js",
         "assets/bridge.ts-9ERPDZ_5.js"
       ]

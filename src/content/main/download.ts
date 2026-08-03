@@ -13,9 +13,12 @@ const CHECK_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24
  * Extract the Instagram shortcode from the current URL path or DOM.
  * Works for /reel/<code>/, /reels/<code>/, /p/<code>/, /<user>/reel/<code>/
  */
-function getShortcode(video?: HTMLVideoElement): string | null {
+function getMediaIdentifier(video?: HTMLVideoElement): string | null {
   const m = location.pathname.match(/\/(?:reel|reels|p)\/([A-Za-z0-9_-]+)/);
   if (m) return m[1];
+
+  const s = location.pathname.match(/\/stories\/[^\/]+\/(\d+)/);
+  if (s) return s[1];
 
   if (video) {
     const article = video.closest('article');
@@ -39,7 +42,7 @@ function getShortcode(video?: HTMLVideoElement): string | null {
  * Format: instagram_<shortcode>_<timestamp>.mp4
  */
 function buildFilename(video?: HTMLVideoElement): string {
-  const code = getShortcode(video);
+  const code = getMediaIdentifier(video);
   const ts = Date.now();
   if (code) return `instagram_${code}_${ts}.mp4`;
   return `instagram_video_${ts}.mp4`;
@@ -50,11 +53,11 @@ function buildFilename(video?: HTMLVideoElement): string {
  * Instagram's React components store the CDN video_url in their memoizedProps.
  */
 function extractFromReactFiber(video: HTMLVideoElement): string | null {
-  // Find React fiber key on the DOM element or its ancestors (up to 5 levels)
+  // Find React fiber key on the DOM element or its ancestors (up to 15 levels)
   let curr: HTMLElement | null = video;
   let fiberKey = undefined;
   
-  for (let i = 0; i < 5 && curr; i++) {
+  for (let i = 0; i < 15 && curr; i++) {
     fiberKey = Object.keys(curr).find(
       (k) => k.startsWith('__reactFiber$') || k.startsWith('__reactInternalInstance$')
     );
@@ -154,10 +157,11 @@ function deepFindVideoUrl(obj: any, depth: number = 0, maxDepth: number = 8): st
  * Convert an Instagram shortcode to a numeric media ID.
  * Instagram uses a base64-like encoding for shortcodes.
  */
-function shortcodeToMediaId(shortcode: string): string {
+function shortcodeToMediaId(shortcodeOrId: string): string {
+  if (/^\d+$/.test(shortcodeOrId)) return shortcodeOrId; // Already a media ID
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
   let id = BigInt(0);
-  for (const ch of shortcode) {
+  for (const ch of shortcodeOrId) {
     const idx = alphabet.indexOf(ch);
     if (idx < 0) continue;
     id = id * BigInt(64) + BigInt(idx);
@@ -286,10 +290,10 @@ async function extractVideoUrl(video: HTMLVideoElement): Promise<string | null> 
   } catch {}
 
   // Strategy 8: Fetch from Instagram API (async, last resort)
-  const shortcode = getShortcode(video);
-  if (shortcode) {
+  const identifier = getMediaIdentifier(video);
+  if (identifier) {
     log('info', 'Trying Instagram API for download URL...');
-    const apiUrl = await fetchVideoUrlFromApi(shortcode);
+    const apiUrl = await fetchVideoUrlFromApi(identifier);
     if (apiUrl) {
       log('info', 'Download URL found via Instagram API');
       return apiUrl;

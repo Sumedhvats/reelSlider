@@ -38,5 +38,5 @@
    "name": "__MSG_appNameChrome__",
    "options_page": "src/support/index.html",
    "permissions": [ "storage", "scripting", "downloads" ],
-   "version": "1.4.2"
+   "version": "1.4.3"
 }

@@ -7,6 +7,14 @@ export function getVideoContext(video: HTMLElement): VideoContext {
   if (isReelOrPost(location.pathname)) return 'reel-viewer';
   if (video.closest('li[style*="translateX("]')) return 'feed-carousel';
   if (video.closest('article')) return 'feed-inline';
+  
+  // Fallback for delayed URL updates (e.g. clicking a Story from the home feed).
+  // On the home feed, all regular posts/reels are wrapped in <article>.
+  // If a video appears without an <article>, it is a Story modal.
+  if (!video.closest('article') && (location.pathname === '/' || video.closest('[role="dialog"]'))) {
+    return 'story-viewer';
+  }
+
   return 'unknown';
 }
 

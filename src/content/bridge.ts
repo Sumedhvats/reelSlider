@@ -28,6 +28,11 @@ import mainUrl from './main.ts?script&module';
           });
         } catch {}
       }
+      if (e.data?.type === '__REELS_SCRUBBER_PREF_UPDATE__') {
+        try {
+          chrome.storage.local.set({ [e.data.payload.key]: e.data.payload.value });
+        } catch {}
+      }
     }
   });
 

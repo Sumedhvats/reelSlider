@@ -24,7 +24,7 @@
       font-family: 'Space Grotesk', system-ui, sans-serif;
       background: var(--black);
       color: var(--white);
-      width: 380px;
+      width: 340px;
       min-height: 100px;
       overflow-x: hidden;
     }
@@ -34,7 +34,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 8px 16px 6px;
+      padding: 12px 16px 10px;
       border-bottom: 1px solid var(--border);
     }
     .logo {
@@ -67,7 +67,7 @@
 
     /* ── Toggle Section ── */
     .section {
-      padding: 6px 16px;
+      padding: 10px 16px;
       border-bottom: 1px solid var(--border);
     }
     .section:last-child { border-bottom: none; }
@@ -77,7 +77,7 @@
       letter-spacing: 0.14em;
       color: var(--dim);
       text-transform: uppercase;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .toggle-row {
@@ -130,7 +130,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 3px 0;
+      padding: 5px 0;
     }
     .setting-row + .setting-row {
       border-top: 1px solid var(--border);
@@ -181,7 +181,7 @@
     .shortcuts-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3px 8px;
+      gap: 5px 12px;
     }
     .shortcut-row {
       display: flex;
@@ -217,17 +217,17 @@
 
     /* ── Ko-fi ── */
     .kofi-section {
-      padding: 6px 16px;
+      padding: 8px 16px;
       border-top: 1px solid var(--border);
     }
     .kofi-card {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       background: #111111;
       border: 1px solid #2a2a2a;
       border-radius: 8px;
-      padding: 6px 10px;
+      padding: 8px 12px;
       text-decoration: none;
       transition: border-color 0.2s, background 0.2s;
       position: relative;
@@ -281,7 +281,7 @@
 
     /* ── Footer ── */
     .footer {
-      padding: 6px 16px;
+      padding: 8px 16px;
       border-top: 1px solid var(--border);
       display: flex;
       align-items: center;
@@ -367,12 +367,14 @@
       background: #ff5e5b;
     }
   </style>
+  <script type="module" crossorigin src="/assets/index.html-Bn3hwtjF.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/constants-Dic-b4Xh.js">
 </head>
 <body>
 
   <!-- Header -->
   <header class="header">
-    <img class="logo" src="/icons/icon48.png" alt="" />
+    <img class="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAGDUExURQAAAAMDAwEBAQICAjs7Ozk5OQUFBUxMTP///6KioRYWFgQEBIWFhfn5+PLy8W1tbX5+fvv7+8zMy39/f/7+/pycnBQTE/z8/P39/u/v7mhoaAUFBMfHxjY2NZaWlQ8PDwgICIGBgfj4+K2trerq6mBgYAQDBHd3dxgYGCoqKsfHx/r6+sHBwDAwMGRkZKenpp+fn6CgoKGhoZmZmc/Pz/39/SwsLGNjY+3t7Y+Pj2ZmZq6urqSkpKOjo6Kiom9vb0pKSigoKAkJCY2NjQcHBzY2Ni4uLi8vLzExMSIiIlpaWgsLC4uLizc3Ny8wMCEhIVtbW1xcW6WlpZ6dnp6enpqamZ2dnZqamqCfn5aWls7OzmVlZe/v74uLip2dnKurqmdnZwoKCv/+/hkZGSsrK8jIyL29vS0tLQYGBjg4OA4ODjIyMhUVFfn4+efn5xQVFTIzMg0NDTo6OkZGRpGRkQwMDAIDAkVFRRkaGcXFxe7u7hISEn19fczMzISEhPT09EdHR6Y/CDMAAAABYktHRAiG3pV6AAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH6gcXDRoST6k5sgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNi0wNy0yM1QxMzoyNjowMSswMDowMBpn3IYAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjYtMDctMjNUMTM6MjY6MDErMDA6MDBrOmQ6AAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDI2LTA3LTIzVDEzOjI2OjE4KzAwOjAwZR0AqAAAABBjYU52AAAAQgAAAEIAAAAJAAAACQpP8hgAAAHUSURBVEjH7VTpX9NAFJwkNT5cDwKpxZOWCCISgQBisVIslaIcApaC1IubggrUA7yAP53dNLH21/pz+1U6+ZLjTXbe7OwDajidUJTq6lVO0aqqD5wBdFVaD84S1Z2DyiQJOs7TBbp4CWByuhjqyTCIGgKSuhgaySCTU4KXoUr4VSAQhZroylXg2j91/SaIRa7fEE3JETzKzWZoFXSxIsKICEKLRWSYIZNutYrmNaYoSpsiwMr8vs0ryWy/08EpdJeo0y5f4V5Xd48Hp7eP+jnhPjDwgAvr58tFMfjQicUeCQxZcWCYSmCK6zHvJjHC7yhk0EjyyWiqgLGn1rO/EsajgmCEaCI8mbJTtp2asseeW9PAzGyw90V6LpOeDy68XPQlZV95kl5j0EpnhnoyjvOm++07YGlc2MlzJ6JdaHp5ZXXNa3p91e1TdQt4WSKBjQiSgU3ktrD9nhVs/eDb+nHatRU7u9jLQc8nUT+KlU/Q3F+oYmNLNu7zF3xV4H/k0LB/4D6r3suSaHzbLkbDLxA89Y+EFQn0PcvLy8OnlYbePQ9uvOd/VIxRefh+ugfoV17yAOk4pBY6ildUUwkKjolm2+WHAHchJ6vGd6HKQVb9qKzhv8UJfsc+qSqa4gwAAAAASUVORK5CYII=" alt="" />
     <div class="brand">
       <div class="brand-name">REELSLIDER</div>
       <div class="brand-sub">
@@ -470,12 +472,12 @@
     <div class="section-label">Shortcuts</div>
     <div class="shortcuts-grid">
       <div class="shortcut-row">
-        <span class="action">Seek −/+ (3s)</span>
-        <div class="keys"><kbd>A</kbd><kbd>D</kbd> or <kbd>←</kbd><kbd>→</kbd></div>
+        <span class="action">Seek −/+</span>
+        <div class="keys"><kbd>A</kbd><kbd>D</kbd></div>
       </div>
       <div class="shortcut-row">
         <span class="action">Play / Pause</span>
-        <div class="keys"><kbd>Space</kbd></div>
+        <div class="keys"><kbd>S</kbd></div>
       </div>
       <div class="shortcut-row">
         <span class="action">Mute</span>
@@ -486,12 +488,12 @@
         <div class="keys"><kbd>F</kbd></div>
       </div>
       <div class="shortcut-row">
-        <span class="action">Playback Speed</span>
-        <div class="keys"><kbd>W</kbd><kbd>S</kbd></div>
+        <span class="action">Loop A/B</span>
+        <div class="keys"><kbd>[</kbd><kbd>]</kbd></div>
       </div>
       <div class="shortcut-row">
-        <span class="action">Temporary Speed</span>
-        <div class="keys"><kbd>⇧</kbd>+<kbd>W</kbd></div>
+        <span class="action">Clear loop</span>
+        <div class="keys"><kbd>\</kbd></div>
       </div>
     </div>
   </div>
@@ -526,6 +528,5 @@
     </div>
   </footer>
 
-  <script type="module" src="./main.ts"></script>
 </body>
 </html>

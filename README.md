@@ -2,7 +2,7 @@
   <img src="icons/icon128.png" width="80" height="80" alt="ReelSlider" />
   <h1>ReelSlider</h1>
   <p><strong>Real video controls for Instagram</strong></p>
-  <p>Seek, volume &amp; playback speed on Reels, Stories, Feed &amp; Posts.</p>
+  <p>Seek, volume, playback speed, and downloading on Reels, Stories, Feed &amp; Posts.</p>
 
   <br />
 
@@ -12,7 +12,7 @@
   </a>
   <img src="https://img.shields.io/badge/firefox-extension-1a1a1a?style=flat-square&logo=firefoxbrowser&logoColor=fff&labelColor=000" alt="Firefox Extension" />
   <img src="https://img.shields.io/badge/license-MIT-1a1a1a?style=flat-square&labelColor=000" alt="MIT License" />
-  <img src="https://img.shields.io/badge/version-1.4.0-1a1a1a?style=flat-square&labelColor=000" alt="Version 1.4.0" />
+  <img src="https://img.shields.io/badge/version-1.4.8-1a1a1a?style=flat-square&labelColor=000" alt="Version 1.4.8" />
 </div>
 
 <br />
@@ -27,10 +27,10 @@
 | **Volume Control** | Set default volume — persists across sessions |
 | **Video Downloading** | Instantly download high-quality videos straight to your device |
 | **Playback Speed** | 0.25× to 2.0× — remembered for all videos |
+| **On-Screen UI** | See your playback speed in a sleek popup when using keyboard shortcuts |
 | **Mute Memory** | Mute preference sticks while scrolling through Reels |
 | **Daily Instagram Limit** | Digital Wellbeing cap (e.g. 1h/day) with auto-pause & break screen |
-| **Keyboard Shortcuts** | A/S/D for seek, M for mute, F for fullscreen |
-| **Loop Sections** | Set loop start/end with `[` and `]` keys |
+| **Keyboard Shortcuts** | Arrows for seek, Space for play/pause, M for mute, F for fullscreen |
 | **Works Everywhere** | Reels, Stories, Feed, Posts, Profile reels tab |
 
 <br />
@@ -39,14 +39,15 @@
 
 | Key | Action |
 |---|---|
-| `A` | Seek backward 5 seconds |
-| `S` | Play / Pause |
-| `D` | Seek forward 5 seconds |
+| `A` or `←` | Seek backward 3 seconds |
+| `Space` | Play / Pause |
+| `D` or `→` | Seek forward 3 seconds |
+| `W` | Increase playback speed |
+| `S` | Decrease playback speed |
+| `Shift`+`W` | Hold for temporary max speed (2.0x) |
+| `Shift`+`S` | Hold for temporary slow speed (0.5x) |
 | `M` | Mute / Unmute |
 | `F` | Toggle fullscreen |
-| `[` | Set loop start |
-| `]` | Set loop end |
-| `\` | Clear loop |
 
 <br />
 

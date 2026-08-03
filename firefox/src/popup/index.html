@@ -24,7 +24,7 @@
       font-family: 'Space Grotesk', system-ui, sans-serif;
       background: var(--black);
       color: var(--white);
-      width: 340px;
+      width: 380px;
       min-height: 100px;
       overflow-x: hidden;
     }
@@ -34,7 +34,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 12px 16px 10px;
+      padding: 8px 16px 6px;
       border-bottom: 1px solid var(--border);
     }
     .logo {
@@ -67,7 +67,7 @@
 
     /* ── Toggle Section ── */
     .section {
-      padding: 10px 16px;
+      padding: 6px 16px;
       border-bottom: 1px solid var(--border);
     }
     .section:last-child { border-bottom: none; }
@@ -77,7 +77,7 @@
       letter-spacing: 0.14em;
       color: var(--dim);
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .toggle-row {
@@ -130,7 +130,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 5px 0;
+      padding: 3px 0;
     }
     .setting-row + .setting-row {
       border-top: 1px solid var(--border);
@@ -181,7 +181,7 @@
     .shortcuts-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5px 12px;
+      gap: 3px 8px;
     }
     .shortcut-row {
       display: flex;
@@ -217,17 +217,17 @@
 
     /* ── Ko-fi ── */
     .kofi-section {
-      padding: 8px 16px;
+      padding: 6px 16px;
       border-top: 1px solid var(--border);
     }
     .kofi-card {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       background: #111111;
       border: 1px solid #2a2a2a;
       border-radius: 8px;
-      padding: 8px 12px;
+      padding: 6px 10px;
       text-decoration: none;
       transition: border-color 0.2s, background 0.2s;
       position: relative;
@@ -281,7 +281,7 @@
 
     /* ── Footer ── */
     .footer {
-      padding: 8px 16px;
+      padding: 6px 16px;
       border-top: 1px solid var(--border);
       display: flex;
       align-items: center;
@@ -367,7 +367,7 @@
       background: #ff5e5b;
     }
   </style>
-  <script type="module" crossorigin src="/assets/index.html-Bn3hwtjF.js"></script>
+  <script type="module" crossorigin src="/assets/index.html-DWhzeJsF.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/constants-Dic-b4Xh.js">
 </head>
 <body>
@@ -472,12 +472,12 @@
     <div class="section-label">Shortcuts</div>
     <div class="shortcuts-grid">
       <div class="shortcut-row">
-        <span class="action">Seek −/+</span>
-        <div class="keys"><kbd>A</kbd><kbd>D</kbd></div>
+        <span class="action">Seek −/+ (3s)</span>
+        <div class="keys"><kbd>A</kbd><kbd>D</kbd> or <kbd>←</kbd><kbd>→</kbd></div>
       </div>
       <div class="shortcut-row">
         <span class="action">Play / Pause</span>
-        <div class="keys"><kbd>S</kbd></div>
+        <div class="keys"><kbd>Space</kbd></div>
       </div>
       <div class="shortcut-row">
         <span class="action">Mute</span>
@@ -488,12 +488,12 @@
         <div class="keys"><kbd>F</kbd></div>
       </div>
       <div class="shortcut-row">
-        <span class="action">Loop A/B</span>
-        <div class="keys"><kbd>[</kbd><kbd>]</kbd></div>
+        <span class="action">Playback Speed</span>
+        <div class="keys"><kbd>W</kbd><kbd>S</kbd></div>
       </div>
       <div class="shortcut-row">
-        <span class="action">Clear loop</span>
-        <div class="keys"><kbd>\</kbd></div>
+        <span class="action">Temporary Speed</span>
+        <div class="keys"><kbd>⇧</kbd>+<kbd>W</kbd></div>
       </div>
     </div>
   </div>

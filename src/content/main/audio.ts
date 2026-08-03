@@ -76,6 +76,7 @@ export function setStoredSpeed(speed: number) {
   if (speed < 0.25 || speed > 4) return;
   try {
     window.localStorage.setItem(PREF_KEYS.SPEED, String(speed));
+    window.postMessage({ type: '__REELS_SCRUBBER_PREF_UPDATE__', payload: { key: PREF_KEYS.SPEED, value: speed } }, '*');
   } catch {}
 }
 

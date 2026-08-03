@@ -8,9 +8,7 @@
     "default_title": "ReelSlider"
   },
   "background": {
-    "scripts": [
-      "assets/index.ts-DIhxxs9B.js"
-    ],
+    "service_worker": "service-worker-loader.js",
     "type": "module"
   },
   "content_scripts": [
@@ -36,7 +34,7 @@
     },
     {
       "js": [
-        "assets/bridge.ts-Ciip8TBX.js"
+        "assets/bridge.ts-9ERPDZ_5.js"
       ],
       "matches": [
         "https://www.instagram.com/*"
@@ -64,12 +62,6 @@
     "downloads"
   ],
   "version": "1.4.7",
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "reelslider@sumedhvats",
-      "strict_min_version": "109.0"
-    }
-  },
   "web_accessible_resources": [
     {
       "matches": [
@@ -79,10 +71,11 @@
         "assets/locks.ts-D6hLRc4D.js",
         "assets/mute-fix.ts-1YPqpD4P.js",
         "assets/reels-timer.ts-B6SDxcWZ.js",
-        "assets/main.ts-BYxGVWbr.js",
+        "assets/main.ts-CPcPUMIL.js",
         "assets/constants-Dic-b4Xh.js",
-        "assets/bridge.ts-Ciip8TBX.js"
-      ]
+        "assets/bridge.ts-9ERPDZ_5.js"
+      ],
+      "use_dynamic_url": false
     }
   ]
 }

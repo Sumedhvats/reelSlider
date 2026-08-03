@@ -3,13 +3,15 @@ import { getGlobalActiveVideo, getGroupToPatch, isHomeFeedMainVideo } from './vi
 import { patchVideo, rollbackVideo, stateMachine } from './patcher';
 import {
   isEnabled, setIsEnabled, enableAudioLock, disableAudioLock, updateGlobalFeedMuted,
-  setSpeedWithLock, getStoredSpeed, setVolumeWithLock, getStoredVolume,
+  setSpeedWithLock, getStoredSpeed, setStoredSpeed, setVolumeWithLock, getStoredVolume,
   syncStoryMute, setMutedWithoutLock, globalFeedMuted, MUTE_APPLYING
 } from './audio';
+let tempSpeed: number | null = null;
 import { DOM_CLASSES } from '../../utils/constants';
 import { isSupportedPage, isFeedOrReels } from './routes';
 import { getVideoContext, isEditable } from './dom';
 import { injectPostDownloadButtons } from './download';
+import { showToast } from './ui';
 let observer: MutationObserver | null = null;
 let timeouts: number[] = [];
 
@@ -32,7 +34,7 @@ export function runPatchLoop() {
     const res = patchVideo(v);
     
     if (state && res.state === 'patched') {
-      const speed = getStoredSpeed();
+      const speed = tempSpeed !== null ? tempSpeed : getStoredSpeed();
       if (Math.abs(v.playbackRate - speed) > 0.001) setSpeedWithLock(v, speed);
       
       const vol = getStoredVolume();
@@ -180,15 +182,47 @@ export function setupListeners() {
   document.addEventListener('keydown', (e) => {
     if (!isEnabled || isEditable(e.target)) return;
     const k = e.key.toLowerCase();
-    const isControl = ['a', 's', 'd', 'm', 'f'].includes(k);
+    const isControl = ['a', 'd', 's', 'w', 'm', 'f', ' ', 'arrowleft', 'arrowright'].includes(k);
     if (!isControl) return;
     
     const active = getGlobalActiveVideo();
     if (active) {
+      if (k === 'w' || k === 's' || k === ' ' || k === 'a' || k === 'd' || k === 'arrowleft' || k === 'arrowright') {
+        e.preventDefault();
+      }
       e.stopPropagation();
-      if (k === 'a') active.currentTime = Math.max(0, active.currentTime - 5);
-      else if (k === 's') active.paused ? active.play().catch(()=>{}) : active.pause();
-      else if (k === 'd') active.currentTime = Math.min(active.duration, active.currentTime + 5);
+      
+      if (k === 'a' || k === 'arrowleft') active.currentTime = Math.max(0, active.currentTime - 3);
+      else if (k === 'd' || k === 'arrowright') active.currentTime = Math.min(active.duration, active.currentTime + 3);
+      else if (k === ' ' || (e.key === ' ' && e.code === 'Space')) active.paused ? active.play().catch(()=>{}) : active.pause();
+      else if (k === 'w') {
+        if (e.shiftKey) {
+          if (tempSpeed !== 2.0) {
+            tempSpeed = 2.0;
+            setSpeedWithLock(active, tempSpeed);
+            showToast('Speed: 2.0x (Temp)');
+          }
+        } else {
+          const newSpeed = Math.min(2.0, getStoredSpeed() + 0.25);
+          setStoredSpeed(newSpeed);
+          setSpeedWithLock(active, newSpeed);
+          showToast(`Speed: ${newSpeed.toFixed(2)}x`);
+        }
+      }
+      else if (k === 's') {
+        if (e.shiftKey) {
+          if (tempSpeed !== 0.5) {
+            tempSpeed = 0.5;
+            setSpeedWithLock(active, tempSpeed);
+            showToast('Speed: 0.5x (Temp)');
+          }
+        } else {
+          const newSpeed = Math.max(0.25, getStoredSpeed() - 0.25);
+          setStoredSpeed(newSpeed);
+          setSpeedWithLock(active, newSpeed);
+          showToast(`Speed: ${newSpeed.toFixed(2)}x`);
+        }
+      }
       else if (k === 'm') {
         const m = !active.muted;
         updateGlobalFeedMuted(m);
@@ -198,6 +232,22 @@ export function setupListeners() {
       else if (k === 'f') {
         if (document.fullscreenElement) document.exitFullscreen().catch(()=>{});
         else active.requestFullscreen().catch(()=>{});
+      }
+    }
+  }, true);
+
+  document.addEventListener('keyup', (e) => {
+    if (!isEnabled || isEditable(e.target)) return;
+    const k = e.key.toLowerCase();
+    if (k === 'w' || k === 's') {
+      if (tempSpeed !== null) {
+        tempSpeed = null;
+        const active = getGlobalActiveVideo();
+        if (active) {
+          const sp = getStoredSpeed();
+          setSpeedWithLock(active, sp);
+          showToast(`Speed: ${sp.toFixed(2)}x`);
+        }
       }
     }
   }, true);

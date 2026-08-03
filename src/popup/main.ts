@@ -204,14 +204,23 @@ chrome.storage.local.get(
 
 chrome.storage.onChanged.addListener((changes, area) => {
   if (area === 'local') {
+    let shouldRender = false;
     if (changes[STORAGE_KEY_TODAY_SECONDS]) {
       state.todaySeconds = (changes[STORAGE_KEY_TODAY_SECONDS].newValue as number) || 0;
-      render();
+      shouldRender = true;
     }
     if (changes[STORAGE_KEY_SNOOZE_SECONDS]) {
       state.snoozeSeconds = (changes[STORAGE_KEY_SNOOZE_SECONDS].newValue as number) || 0;
-      render();
+      shouldRender = true;
     }
+    if (changes[PREF_KEYS.SPEED]) {
+      const idx = SPEED_STEPS.indexOf(changes[PREF_KEYS.SPEED].newValue as number);
+      if (idx !== -1) {
+        state.speedIdx = idx;
+        shouldRender = true;
+      }
+    }
+    if (shouldRender) render();
   }
 });
 

@@ -1,0 +1,18 @@
+{
+   "appDesc": {
+      "description": "Manifest short description (max 132 chars)",
+      "message": "Instagram'da gerçek video kontrolleri. Reels, Hikayeler, Feed ve Gönderilerde arama, ses ve hız."
+   },
+   "appNameChrome": {
+      "description": "Extension name on the Chrome Web Store (max 75 chars)",
+      "message": "ReelSlider – Instagram Video Kontrolleri"
+   },
+   "appNameEdge": {
+      "description": "Extension name on Microsoft Edge Add-ons (max 75 chars)",
+      "message": "ReelSlider – Instagram Video Kontrolleri"
+   },
+   "appNameFirefox": {
+      "description": "Extension name on Firefox Add-ons (AMO)",
+      "message": "ReelSlider – Instagram Video Kontrolleri"
+   }
+}

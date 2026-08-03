@@ -6,7 +6,6 @@ export const UI_IDS = {
   PRO_ANNOUNCE: 'reels-scrubber-pro-announce',
   PRO_NOTICE: 'reels-scrubber-pro-preview-notice',
   PRO_WELCOME: 'reels-scrubber-pro-preview-welcome',
-  LOOP_STYLE: 'reels-scrubber-loop-style',
   DOWNLOAD_STYLE: 'reels-scrubber-download-style'
 };
 
@@ -48,16 +47,7 @@ export function injectTagsLiftCSS() {
   document.head.appendChild(style);
 }
 
-export function injectLoopMarkerCSS() {
-  if (document.getElementById(UI_IDS.LOOP_STYLE)) return;
-  const style = document.createElement('style');
-  style.id = UI_IDS.LOOP_STYLE;
-  style.textContent = `
-    [data-reels-scrubber-loop-markers]{opacity:0;pointer-events:none;transition:opacity .15s ease;}
-    *:hover>[data-reels-scrubber-loop-markers]{opacity:1;pointer-events:auto;}
-  `;
-  document.head.appendChild(style);
-}
+
 
 export function injectDownloadCSS() {
   if (document.getElementById(UI_IDS.DOWNLOAD_STYLE)) return;
@@ -113,7 +103,53 @@ export function getToastStack(): HTMLElement {
   if (!e) {
     e = document.createElement('div');
     e.id = UI_IDS.TOAST_STACK;
+    Object.assign(e.style, {
+      position: 'fixed',
+      bottom: '30px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      zIndex: '999999',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      pointerEvents: 'none'
+    });
     document.body.appendChild(e);
   }
   return e;
 }
+
+export function showToast(msg: string) {
+  const stack = getToastStack();
+  const t = document.createElement('div');
+  t.textContent = msg;
+  Object.assign(t.style, {
+    background: 'rgba(0, 0, 0, 0.75)',
+    color: '#fff',
+    padding: '8px 16px',
+    borderRadius: '8px',
+    fontSize: '14px',
+    fontFamily: 'system-ui, sans-serif',
+    fontWeight: '600',
+    marginBottom: '8px',
+    backdropFilter: 'blur(4px)',
+    WebkitBackdropFilter: 'blur(4px)',
+    transition: 'opacity 0.3s ease, transform 0.3s ease',
+    opacity: '0',
+    transform: 'translateY(10px)',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+  });
+  stack.appendChild(t);
+  
+  requestAnimationFrame(() => {
+    t.style.opacity = '1';
+    t.style.transform = 'translateY(0)';
+  });
+  
+  setTimeout(() => {
+    t.style.opacity = '0';
+    t.style.transform = 'translateY(10px)';
+    setTimeout(() => t.remove(), 300);
+  }, 1500);
+}
+

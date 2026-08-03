@@ -7,7 +7,9 @@
   <br />
 
   <img src="https://img.shields.io/badge/manifest-v3-1a1a1a?style=flat-square&labelColor=000" alt="Manifest V3" />
-  <img src="https://img.shields.io/badge/chrome-extension-1a1a1a?style=flat-square&logo=googlechrome&logoColor=fff&labelColor=000" alt="Chrome Extension" />
+  <a href="https://chromewebstore.google.com/detail/lganmccldjdmfolkijopflmepainfloc?utm_source=item-share-cb" target="_blank">
+    <img src="https://img.shields.io/badge/chrome-extension-1a1a1a?style=flat-square&logo=googlechrome&logoColor=fff&labelColor=000" alt="Chrome Extension" />
+  </a>
   <img src="https://img.shields.io/badge/firefox-extension-1a1a1a?style=flat-square&logo=firefoxbrowser&logoColor=fff&labelColor=000" alt="Firefox Extension" />
   <img src="https://img.shields.io/badge/license-MIT-1a1a1a?style=flat-square&labelColor=000" alt="MIT License" />
   <img src="https://img.shields.io/badge/version-1.3.5-1a1a1a?style=flat-square&labelColor=000" alt="Version 1.3.5" />
@@ -49,7 +51,11 @@
 
 ## Installation
 
-### Method 1: Download Pre-built (Recommended)
+### Chrome Web Store (Recommended)
+
+You can install ReelSlider directly from the [Chrome Web Store](https://chromewebstore.google.com/detail/lganmccldjdmfolkijopflmepainfloc?utm_source=item-share-cb).
+
+### Method 1: Download Pre-built
 1. Go to the [Releases page](https://github.com/Sumedhvats/reelSlider/releases).
 2. Download the `.zip` file for your browser (Chrome or Firefox).
 3. Extract the `.zip` file.

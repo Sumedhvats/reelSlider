@@ -11,7 +11,7 @@ export const appInfo = {
 
 export const GITHUB_URL = 'https://github.com/Sumedhvats/';
 export const DONATE_URL = 'https://github.com/Sumedhvats/';
-export const STORE_URL = 'https://github.com/Sumedhvats/';
+export const STORE_URL = 'https://chromewebstore.google.com/detail/lganmccldjdmfolkijopflmepainfloc?utm_source=item-share-cb';
 export const FEEDBACK_URL = 'https://github.com/Sumedhvats/';
 export const PRIVACY_POLICY_URL = 'https://github.com/Sumedhvats/';
 export const HOMEPAGE_URL = 'https://github.com/Sumedhvats/';

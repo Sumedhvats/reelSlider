@@ -22,12 +22,14 @@ export function injectStoryControlsCSS() {
     video[data-reels-scrubber-active][data-reels-scrubber-story-layout]::-webkit-media-controls-panel {
       background: transparent !important;
     }
-    @-moz-document url-prefix() {
+  `;
+  if (navigator.userAgent.toLowerCase().includes('firefox')) {
+    style.textContent += `
       video[data-reels-scrubber-active][data-reels-scrubber-story-layout] {
         height: calc(100% - 72px) !important;
       }
-    }
-  `;
+    `;
+  }
   document.head.appendChild(style);
 }
 

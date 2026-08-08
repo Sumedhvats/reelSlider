@@ -1,8 +1,8 @@
 <div align="center">
   <img src="icons/icon128.png" width="80" height="80" alt="ReelSlider" />
   <h1>ReelSlider</h1>
-  <p><strong>Real video controls for Instagram</strong></p>
-  <p>Seek, volume, playback speed, and downloading on Reels, Stories, Feed &amp; Posts.</p>
+  <p><strong>Real video controls & media downloader for Instagram</strong></p>
+  <p>Seek, volume, playback speed, auto-scroll, downloading, and multi-language support for Reels, Stories, Feed &amp; Posts.</p>
 
   <br />
 
@@ -12,7 +12,7 @@
   </a>
   <img src="https://img.shields.io/badge/firefox-extension-1a1a1a?style=flat-square&logo=firefoxbrowser&logoColor=fff&labelColor=000" alt="Firefox Extension" />
   <img src="https://img.shields.io/badge/license-MIT-1a1a1a?style=flat-square&labelColor=000" alt="MIT License" />
-  <img src="https://img.shields.io/badge/version-1.4.9-1a1a1a?style=flat-square&labelColor=000" alt="Version 1.4.9" />
+  <img src="https://img.shields.io/badge/version-1.5.0-1a1a1a?style=flat-square&labelColor=000" alt="Version 1.5.0" />
 </div>
 
 <br />
@@ -24,15 +24,30 @@
 | Feature | Description |
 |---|---|
 | **Seek & Scrub** | Click or drag the timeline on any Instagram video |
-| **Volume Control** | Set default volume — persists across sessions |
-| **Video Downloading** | Instantly download high-quality videos straight to your device |
-| **Playback Speed** | 0.25× to 2.0× — remembered for all videos |
-| **Auto-scroll Reels** | Automatically scroll to the next reel when the current video finishes |
-| **On-Screen UI** | See your playback speed in a sleek popup when using keyboard shortcuts |
-| **Mute Memory** | Mute preference sticks while scrolling through Reels |
+| **1-Click Downloading** | Instantly download high-quality videos & photo posts directly to your device |
+| **Auto-scroll Reels** | Automatically scroll to the next reel when the current video ends (ON by default) |
+| **Multi-Language Support** | Full localization in 🇬🇧/🇺🇸 English, 🇩🇪 Deutsch, 🇪🇸 Español, 🇫🇷 Français, 🇧🇷 Português, and 🇹🇷 Türkçe |
+| **Smart Language Auto-Detect** | Automatically matches active Instagram tab language or allows manual language selection |
+| **Volume Control** | Set custom default volume — persists across sessions |
+| **Playback Speed** | 0.25× to 2.0× — remembered automatically for all videos |
+| **On-Screen Speed UI** | See playback speed toasts in a sleek popup when using keyboard shortcuts |
+| **Mute Memory** | Mute preference carries over smoothly while scrolling Reels |
 | **Daily Instagram Limit** | Digital Wellbeing cap (e.g. 1h/day) with auto-pause & break screen |
-| **Keyboard Shortcuts** | Arrows for seek, Space for play/pause, M for mute, F for fullscreen, G for auto-scroll |
-| **Works Everywhere** | Reels, Stories, Feed, Posts, Profile reels tab |
+| **Keyboard Shortcuts** | Seek (`A`/`D` or `←`/`→`), Speed (`W`/`S`), Mute (`M`), Fullscreen (`F`), Auto-scroll (`G`) |
+| **Works Everywhere** | Reels, Stories, Feed, Posts, and Profile reels tab |
+
+<br />
+
+## 🌐 Supported Languages
+
+ReelSlider automatically detects the language of your Instagram page or system, with an in-popup selector:
+
+- 🇺🇸 / 🇬🇧 **English**
+- 🇩🇪 **Deutsch** (German)
+- 🇪🇸 **Español** (Spanish)
+- 🇫🇷 **Français** (French)
+- 🇧🇷 **Português** (Portuguese)
+- 🇹🇷 **Türkçe** (Turkish)
 
 <br />
 
@@ -43,13 +58,13 @@
 | `A` or `←` | Seek backward 3 seconds |
 | `Space` | Play / Pause |
 | `D` or `→` | Seek forward 3 seconds |
-| `W` | Increase playback speed |
-| `S` | Decrease playback speed |
+| `W` | Increase playback speed (+0.25x) |
+| `S` | Decrease playback speed (-0.25x) |
 | `Shift`+`W` | Hold for temporary max speed (2.0x) |
 | `Shift`+`S` | Hold for temporary slow speed (0.5x) |
 | `M` | Mute / Unmute |
 | `F` | Toggle fullscreen |
-| `G` | Toggle auto-scroll |
+| `G` | Toggle auto-scroll (ON / OFF) |
 
 <br />
 
@@ -59,9 +74,9 @@
 
 You can install ReelSlider directly from the [Chrome Web Store](https://chromewebstore.google.com/detail/lganmccldjdmfolkijopflmepainfloc?utm_source=item-share-cb).
 
-### Method 1: Download Pre-built
+### Method 1: Download Pre-built Release
 1. Go to the [Releases page](https://github.com/Sumedhvats/reelSlider/releases).
-2. Download the `.zip` file for your browser (Chrome or Firefox).
+2. Download the `.zip` file for your browser (`reelslider-v1.5.0-chrome.zip` or `reelslider-v1.5.0-firefox.zip`).
 3. Extract the `.zip` file.
 4. Follow the loading instructions below based on your browser.
 
@@ -107,18 +122,19 @@ reelSlider/
 ├── src/                       # TypeScript source code
 │   ├── background/            # Background service worker
 │   ├── content/               # Content scripts injected into Instagram
-│   │   ├── main/              # Core video patching & logic (MAIN world)
+│   │   ├── main/              # Core video patching, download & auto-scroll logic
 │   │   ├── bridge.ts          # ISOLATED ↔ MAIN world bridge
 │   │   ├── locks.ts           # Prototype locks for media elements
 │   │   ├── mute-fix.ts        # Enforces mute state
 │   │   └── reels-timer.ts     # Digital Wellbeing tracker
-│   ├── popup/                 # Popup UI interface
-│   ├── support/               # Options/Support page
-│   └── utils/                 # Shared constants & helpers
-├── _locales/                  # Internationalization (i18n)
+│   ├── popup/                 # Popup UI interface & language selector
+│   ├── support/               # Options & Support page
+│   └── utils/                 # Multi-language i18n & shared helpers
+├── store-assets/              # Store listings & localized assets (en, de, es, fr, pt, pt_BR, tr)
+├── _locales/                  # Locale JSON messages (en, de, es, fr, pt, pt_BR, tr)
 ├── icons/                     # Extension icons
-├── dist/                      # Compiled Chrome extension (created after build)
-├── firefox/                   # Compiled Firefox extension (created after build)
+├── dist/                      # Compiled Chrome extension
+├── firefox/                   # Compiled Firefox extension
 ├── manifest.json              # Chrome extension manifest (MV3)
 ├── package.json               # Build dependencies & scripts
 ├── tsconfig.json              # TypeScript configuration
@@ -148,12 +164,9 @@ ReelSlider injects a content script into Instagram pages that:
 3. **Hides Instagram's custom overlays** that block interaction
 4. **Syncs mute/volume/speed preferences** via `localStorage` and `chrome.storage`
 5. **Installs a prototype lock** on `HTMLMediaElement.prototype.muted` to prevent Instagram from overriding your audio preference
-6. **Listens for keyboard shortcuts** and translates them into video commands
-
-The background service worker (`worker.js`) handles:
-- Injecting user preferences into new tabs via `chrome.scripting.executeScript`
-- Syncing popup changes to all open Instagram tabs
-- Persisting settings in `chrome.storage.local`
+6. **Injects high-resolution download buttons** into post & reel action bars in a language-agnostic way
+7. **Auto-scrolls Reels** seamlessly when videos end
+8. **Listens for keyboard shortcuts** and translates them into video commands
 
 <br />
 
@@ -169,12 +182,13 @@ Contributions are welcome! Feel free to:
 
 ## License
 
-MIT © [sumedh](https://github.com/Sumedhvats/)
+MIT © [Sumedh Vats](https://github.com/Sumedhvats/)
 
 ---
 
 <div align="center">
   <p>
-    <sub>Built by <a href="https://github.com/Sumedhvats/">sumedh</a></sub>
+    <sub>Built by <a href="https://github.com/Sumedhvats/">Sumedh Vats</a></sub>
   </p>
 </div>
+

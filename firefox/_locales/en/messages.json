@@ -1,18 +1,18 @@
 {
    "appDesc": {
       "description": "Manifest short description (max 132 chars)",
-      "message": "Seek, speed, volume, daily limit timer & loop controls for Instagram Reels, Stories & Feed."
+      "message": "Seek, volume, speed, auto-scroll, downloading & daily limit controls for Instagram Reels, Stories & Feed."
    },
    "appNameChrome": {
       "description": "Extension name on the Chrome Web Store (max 75 chars)",
-      "message": "ReelSlider - Instagram Reels Speed, Seek & Volume Controls"
+      "message": "ReelSlider — Video Controls, Auto-Scroll & Downloader"
    },
    "appNameEdge": {
       "description": "Extension name on Microsoft Edge Add-ons (max 75 chars)",
-      "message": "ReelSlider — Instagram Video Controls"
+      "message": "ReelSlider — Video Controls, Auto-Scroll & Downloader"
    },
    "appNameFirefox": {
       "description": "Extension name on Firefox Add-ons (AMO)",
-      "message": "ReelSlider — Instagram Video Controls"
+      "message": "ReelSlider — Video Controls, Auto-Scroll & Downloader"
    }
 }

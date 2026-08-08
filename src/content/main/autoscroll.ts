@@ -2,7 +2,7 @@ import { DOM_ATTRIBUTES, PREF_KEYS } from '../../utils/constants';
 import { isReelOrPost } from './routes';
 import { isEnabled } from './audio';
 
-let autoScrollEnabled = false;
+let autoScrollEnabled = true;
 
 export function getAutoScrollEnabled(): boolean {
   return autoScrollEnabled;
@@ -25,8 +25,8 @@ export function loadAutoScrollPref(): boolean {
     if (val === 'true') { autoScrollEnabled = true; return true; }
     if (val === 'false') { autoScrollEnabled = false; return false; }
   } catch {}
-  autoScrollEnabled = false;
-  return false;
+  autoScrollEnabled = true;
+  return true;
 }
 
 function findScrollContainer(el: HTMLElement): HTMLElement | null {

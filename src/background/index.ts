@@ -32,7 +32,7 @@ function getPrefs(): Promise<UserPrefs> {
           speed: typeof data[PREF_KEYS.SPEED] === 'number' ? (data[PREF_KEYS.SPEED] as number) : 1.0,
           volume: typeof data[PREF_KEYS.VOLUME] === 'number' ? (data[PREF_KEYS.VOLUME] as number) : 0.8,
           muted: typeof data[PREF_KEYS.FEED_MUTED] === 'boolean' ? (data[PREF_KEYS.FEED_MUTED] as boolean) : false,
-          autoScroll: typeof data[PREF_KEYS.AUTO_SCROLL] === 'boolean' ? (data[PREF_KEYS.AUTO_SCROLL] as boolean) : false,
+          autoScroll: typeof data[PREF_KEYS.AUTO_SCROLL] === 'boolean' ? (data[PREF_KEYS.AUTO_SCROLL] as boolean) : true,
         });
       }
     );

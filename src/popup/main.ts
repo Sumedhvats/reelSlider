@@ -26,7 +26,7 @@ let state: PopupState = {
   speedIdx: SPEED_STEPS.indexOf(1.0),
   volIdx: VOLUME_STEPS.indexOf(80),
   muted: false,
-  autoScroll: false,
+  autoScroll: true,
   limitEnabled: false,
   limitIdx: LIMIT_STEPS.indexOf(60),
   todaySeconds: 0,

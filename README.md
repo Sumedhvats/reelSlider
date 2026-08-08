@@ -1,8 +1,8 @@
 <div align="center">
   <img src="icons/icon128.png" width="80" height="80" alt="ReelSlider" />
   <h1>ReelSlider</h1>
-  <p><strong>Real video controls & media downloader for Instagram</strong></p>
-  <p>Seek, volume, playback speed, auto-scroll, downloading, and multi-language support for Reels, Stories, Feed &amp; Posts.</p>
+  <p><strong>Video Controls, Auto-Scroll, Speed &amp; Media Downloader for Instagram</strong></p>
+  <p>Seek, volume memory, playback speed, auto-scroll reels, media downloader, and multi-language support for Reels, Stories, Feed &amp; Posts.</p>
 
   <br />
 

@@ -1,0 +1,45 @@
+=========================================
+ReelSlider - Seek, Speed, Download & Volume Controls for Instagram
+=========================================
+Instagram gives you no way to seek, skip, slow down, or download a Reel — ReelSlider fixes that. Add a real seek bar, playback speed control, media downloading, and volume memory to every Reel, Story, Feed post, and video on Instagram.
+
+Whether you want to speed up a slow Reel, download a carousel of high-quality photos, slow down a fast talker, or skip ahead on a long Story, ReelSlider gives Instagram the same controls YouTube and Netflix already have — completely free, with no account and no data collection.
+
+✦ WHY PEOPLE INSTALL REELSLIDER
+-----------------------------------------
+• Can't seek or skip on Instagram Reels? Click or drag the timeline to jump anywhere in the video.
+• Want to save posts and videos? A native download button gets you the highest-quality version of any Reel, video, or photo post directly to your device.
+• Want to speed up or slow down an Instagram Reel? Set playback speed anywhere from 0.25x to 2.0x — remembered automatically next time.
+• Tired of Instagram resetting your volume every time you scroll? Set a custom default volume that sticks across sessions.
+• Annoyed by sound turning back on as you scroll? Mute Memory keeps your mute/unmute choice as you move between videos.
+• Scrolling too much? Set a Daily Instagram Limit to cap your usage, complete with an auto-pause break screen.
+
+✦ KEY FEATURES
+-----------------------------------------
+• Seek & Scrub — click or drag the timeline on any Instagram Reel, Story, Feed post, or Profile video.
+• One-Click Downloading — instantly download high-quality videos and photo posts straight to your device.
+• Playback Speed Control — slow down or speed up Instagram Reels from 0.25x to 2.0x, saved automatically.
+• On-Screen Speed UI — see your playback speed in a sleek popup when using keyboard shortcuts.
+• Custom Default Volume — set your preferred volume once; it persists across every session.
+• Mute Memory — your mute/unmute preference carries over as you scroll Reels.
+• Daily Instagram Limit — stay mindful with a customizable daily usage cap (e.g. 1h/day).
+• Works Everywhere — Reels, Stories, Feed, Posts, and Profile tabs, all with the same controls.
+
+✦ POWER-USER KEYBOARD SHORTCUTS
+-----------------------------------------
+• [Space] Play / Pause
+• [A] or [←] Seek backward 3 seconds
+• [D] or [→] Seek forward 3 seconds
+• [W] / [S] Increase / Decrease playback speed
+• [Shift+W] Hold for temporary 2.0x max speed
+• [Shift+S] Hold for temporary 0.5x slow speed
+• [M] Mute / Unmute
+• [F] Toggle fullscreen
+
+✦ 100% FREE & OPEN SOURCE — ZERO DATA COLLECTED
+-----------------------------------------
+ReelSlider runs entirely in your browser. No data is collected, stored, or sent anywhere. No account, no sign-up, no tracking, no Pro tier — every feature is free, forever. The full source code is public on GitHub.
+
+Developed by Sumedh Vats • Portfolio: https://svats.me/ • GitHub: https://github.com/Sumedhvats/reelSlider
+=========================================
+

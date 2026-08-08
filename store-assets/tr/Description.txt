@@ -1,0 +1,43 @@
+=========================================
+ReelSlider – Instagram için İlerleme Çubuğu, Hız, İndirme ve Ses Kontrolü
+=========================================
+Instagram Reels videolarını sarmanıza, yavaşlatmanıza veya indirmenize izin vermez — ReelSlider bunu çözer. Instagram'daki her Reel, Hikaye, Akış gönderisi ve video için gerçek bir ilerleme çubuğu, oynatma hızı kontrolü, medya indirme ve ses hafızası ekleyin.
+
+Yavaş bir Reel'ı hızlandırmak, yüksek kaliteli bir fotoğraf karuselini indirmek, hızlı konuşan birini yavaşlatmak veya uzun bir Hikayeyi ileri sarmak istiyorsanız, ReelSlider Instagram'a YouTube ve Netflix'te bulunan kontrol özelliklerini kazandırır — tamamen ücretsiz, hesap gerektirmeden ve veri toplamadan.
+
+✦ NEDEN REELSLIDER KULLANMALISINIZ?
+-----------------------------------------
+• Instagram Reels videolarında ileri/geri saramıyor musunuz? Videonun istediğiniz saniyesine atlamak için zaman çizelgesine tıklayın veya sürükleyin.
+• Gönderileri ve videoları kaydetmek mi istiyorsunuz? Yerleşik indirme düğmesi her Reel, video veya fotoğraf gönderisini cihazınıza yüksek kalitede indirir.
+• Reels videolarını hızlandırmak veya yavaşlatmak mı istiyorsunuz? Oynatma hızını 0.25x ile 2.0x arasında ayarlayın — bir sonraki kullanımda otomatik hatırlanır.
+• Instagram'ın her kaydırmada sesi sıfırlamasından sıkıldınız mı? Oturumlar arasında geçerli olan özel bir varsayılan ses seviyesi belirleyin.
+• Kaydırırken sesin kendiliğinden açılmasından rahatsız mısınız? Sessize alma hafızası, ses tercihinizi korur.
+• Instagram'da çok mu zaman harcıyorsunuz? Otomatik duraklatma ekranına sahip Günlük Instagram Limiti belirleyin.
+
+✦ ÖNE ÇIKAN ÖZELLİKLER
+-----------------------------------------
+• Sarma ve İlerleme Çubuğu — Reels, Hikayeler, Akış ve Profil videolarında tıklayın veya sürükleyin.
+• Tek Tıkla İndirme — yüksek kaliteli video ve fotoğrafları anında cihazınıza indirin.
+• Oynatma Hızı Kontrolü — 0.25x ile 2.0x arasında ayarlayın, otomatik kaydedilir.
+• Özel Varsayılan Ses — tercih ettiğiniz ses seviyesini bir kez ayarlayın.
+• Sessize Alma Hafızası — kaydırdıkça ses tercihiniz korunur.
+• Günlük Instagram Limiti — kullanım sürenizi yönetin.
+
+✦ KLAVYE KISAYOLLARI
+-----------------------------------------
+• [Boşluk] Oynat / Duraklat
+• [A] veya [←] 3 saniye geri sar
+• [D] veya [→] 3 saniye ileri sar
+• [W] / [S] Oynatma hızını artır / azalt
+• [Shift+W] Geçici 2.0x maksimum hız için basılı tutun
+• [Shift+S] Geçici 0.5x yavaş hız için basılı tutun
+• [M] Sesi Kapat / Aç
+• [F] Tam ekran moduna geç
+
+✦ %100 ÜCRETSİZ VE AÇIK KAYNAK — VERİ TOPLANMAZ
+-----------------------------------------
+ReelSlider tamamen tarayıcınızda çalışır. Hiçbir veri toplanmaz, saklanmaz veya gönderilmez. Hesap yok, kayıt yok, izleme yok — tüm özellikler sonsuza kadar ücretsizdir. Tüm kaynak kodları GitHub'da açıktır.
+
+Geliştirici: Sumedh Vats • Portfolyo: https://svats.me/ • GitHub: https://github.com/Sumedhvats/reelSlider
+=========================================
+

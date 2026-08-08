@@ -1,0 +1,43 @@
+=========================================
+ReelSlider – Controles de Avance, Velocidad, Descarga y Volumen para Instagram
+=========================================
+Instagram no te permite retroceder, acelerar ni descargar Reels — ReelSlider soluciona esto. Añade una barra de reproducción real, control de velocidad, descarga de archivos y memoria de volumen a cada Reel, Story, publicación de Feed y vídeo en Instagram.
+
+Ya sea que quieras acelerar un Reel lento, descargar una galería de fotos en alta calidad, ralentizar un vídeo o saltar hacia adelante en una Story larga, ReelSlider le da a Instagram los mismos controles que ya tienes en YouTube y Netflix — 100% gratis, sin registro y sin recolección de datos.
+
+✦ POR QUÉ LA GENTE INSTALA REELSLIDER
+-----------------------------------------
+• ¿No puedes rebobinar ni saltar en Instagram Reels? Haz clic o arrastra la barra de tiempo para ir a cualquier segundo del vídeo.
+• ¿Quieres guardar publicaciones y vídeos? Un botón de descarga nativo descarga la versión de mejor calidad de cualquier Reel, vídeo o foto directamente en tu dispositivo.
+• ¿Quieres acelerar o ralentizar un Reel? Ajusta la velocidad de reproducción de 0.25x a 2.0x — se recuerda automáticamente.
+• ¿Cansado de que Instagram reinicie el volumen al desplazar? Define un volumen predeterminado personalizado que se mantiene en cada sesión.
+• ¿Molesto por el sonido que se activa solo al desplazar? La memoria de silencio mantiene tu elección de silenciar o activar sonido.
+• ¿Pasas demasiado tiempo en Instagram? Establece un límite diario de uso con una pantalla de pausa automática.
+
+✦ CARACTERÍSTICAS PRINCIPALES
+-----------------------------------------
+• Control de reproducción y desplazamiento — haz clic o arrastra la línea de tiempo en Reels, Stories y publicaciones.
+• Descargas con un solo clic — descarga inmediatamente vídeos y fotos en alta calidad.
+• Control de velocidad — ajusta entre 0.25x y 2.0x, guardado automáticamente.
+• Volumen predeterminado personalizado — elige tu volumen preferido una sola vez.
+• Memoria de silencio — tu preferencia de silencio se mantiene mientras navegas.
+• Límite diario en Instagram — gestiona tu tiempo con un límite diario personalizable.
+
+✦ ATAJOS DE TECLADO
+-----------------------------------------
+• [Espacio] Reproducir / Pausar
+• [A] o [←] Rebobinar 3 segundos
+• [D] o [→] Adelantar 3 segundos
+• [W] / [S] Aumentar / Disminuir velocidad
+• [Shift+W] Mantener presionado para velocidad máxima temporal de 2.0x
+• [Shift+S] Mantener presionado para velocidad lenta temporal de 0.5x
+• [M] Silenciar / Activar sonido
+• [F] Pantalla completa
+
+✦ 100% GRATIS Y CÓDIGO ABIERTO — SIN RECOLECCIÓN DE DATOS
+-----------------------------------------
+ReelSlider funciona completamente en tu navegador. No se recopilan, almacenan ni envían datos a ningún lugar. Sin cuenta, sin registro, sin rastreo — todas las funciones son gratuitas para siempre. El código fuente completo es público en GitHub.
+
+Desarrollado por Sumedh Vats • Portafolio: https://svats.me/ • GitHub: https://github.com/Sumedhvats/reelSlider
+=========================================
+

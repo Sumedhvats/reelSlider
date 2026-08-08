@@ -9,6 +9,7 @@ interface UserPrefs {
   speed: number;
   volume: number;
   muted: boolean;
+  autoScroll: boolean;
 }
 
 function isInstagramTab(url?: string): boolean {
@@ -22,7 +23,8 @@ function getPrefs(): Promise<UserPrefs> {
         PREF_KEYS.SCRUBBER_ENABLED,
         PREF_KEYS.SPEED,
         PREF_KEYS.VOLUME,
-        PREF_KEYS.FEED_MUTED
+        PREF_KEYS.FEED_MUTED,
+        PREF_KEYS.AUTO_SCROLL
       ],
       (data) => {
         resolve({
@@ -30,6 +32,7 @@ function getPrefs(): Promise<UserPrefs> {
           speed: typeof data[PREF_KEYS.SPEED] === 'number' ? (data[PREF_KEYS.SPEED] as number) : 1.0,
           volume: typeof data[PREF_KEYS.VOLUME] === 'number' ? (data[PREF_KEYS.VOLUME] as number) : 0.8,
           muted: typeof data[PREF_KEYS.FEED_MUTED] === 'boolean' ? (data[PREF_KEYS.FEED_MUTED] as boolean) : false,
+          autoScroll: typeof data[PREF_KEYS.AUTO_SCROLL] === 'boolean' ? (data[PREF_KEYS.AUTO_SCROLL] as boolean) : false,
         });
       }
     );
@@ -37,7 +40,7 @@ function getPrefs(): Promise<UserPrefs> {
 }
 
 function injectPrefs(tabId: number, prefs: UserPrefs, force: boolean = false) {
-  const { enabled, muted, speed, volume } = prefs;
+  const { enabled, muted, speed, volume, autoScroll } = prefs;
 
   chrome.scripting
     .executeScript({
@@ -49,6 +52,7 @@ function injectPrefs(tabId: number, prefs: UserPrefs, force: boolean = false) {
         feedMuted: boolean,
         speedPref: number,
         volumePref: number,
+        autoScrollPref: boolean,
         forceOverwrite: boolean,
         gEnabled: string,
         gFlags: string,
@@ -100,11 +104,23 @@ function injectPrefs(tabId: number, prefs: UserPrefs, force: boolean = false) {
           } catch (e) {}
         }
 
+        // Sync the auto-scroll preference
+        let currentStoredAutoScroll: string | null = null;
+        try {
+          currentStoredAutoScroll = window.localStorage.getItem('reels_scrubber_auto_scroll_pref');
+        } catch (e) {}
+
+        if (forceOverwrite || currentStoredAutoScroll === null) {
+          try {
+            window.localStorage.setItem('reels_scrubber_auto_scroll_pref', String(autoScrollPref));
+          } catch (e) {}
+        }
+
         // If forcing an update (changed via popup), dispatch an event so the ES module context can apply it securely
         if (forceOverwrite) {
           window.dispatchEvent(
             new CustomEvent('ig-reels-scrubber-force-update', {
-              detail: { speedPref, volumePref }
+              detail: { speedPref, volumePref, autoScrollPref }
             })
           );
         }
@@ -125,6 +141,7 @@ function injectPrefs(tabId: number, prefs: UserPrefs, force: boolean = false) {
         muted,
         speed,
         volume,
+        autoScroll,
         force,
         DOM_ATTRIBUTES.REELS_SCRUBBER_ENABLED,
         G_FLAGS,
@@ -184,7 +201,8 @@ chrome.storage.onChanged.addListener((changes, area) => {
       changes[PREF_KEYS.FEED_MUTED] !== undefined ||
       changes[PREF_KEYS.SCRUBBER_ENABLED] !== undefined ||
       changes[PREF_KEYS.SPEED] !== undefined ||
-      changes[PREF_KEYS.VOLUME] !== undefined;
+      changes[PREF_KEYS.VOLUME] !== undefined ||
+      changes[PREF_KEYS.AUTO_SCROLL] !== undefined;
     if (shouldForce) {
       injectAll(true);
     }

@@ -5,6 +5,7 @@ interface PopupState {
   speedIdx: number;
   volIdx: number;
   muted: boolean;
+  autoScroll: boolean;
   limitEnabled: boolean;
   limitIdx: number;
   todaySeconds: number;
@@ -25,6 +26,7 @@ let state: PopupState = {
   speedIdx: SPEED_STEPS.indexOf(1.0),
   volIdx: VOLUME_STEPS.indexOf(80),
   muted: false,
+  autoScroll: false,
   limitEnabled: false,
   limitIdx: LIMIT_STEPS.indexOf(60),
   todaySeconds: 0,
@@ -103,6 +105,9 @@ function render() {
   ui.muteToggle.classList.toggle('on', muted);
   ui.muteToggle.setAttribute('aria-pressed', String(muted));
 
+  ui.autoscrollToggle.classList.toggle('on', state.autoScroll);
+  ui.autoscrollToggle.setAttribute('aria-pressed', String(state.autoScroll));
+
 
   limitToggle.classList.toggle('on', limitEnabled);
   limitToggle.setAttribute('aria-pressed', String(limitEnabled));
@@ -131,6 +136,7 @@ function save() {
     [PREF_KEYS.SPEED]: SPEED_STEPS[state.speedIdx],
     [PREF_KEYS.VOLUME]: VOLUME_STEPS[state.volIdx] / 100,
     [PREF_KEYS.FEED_MUTED]: state.muted,
+    [PREF_KEYS.AUTO_SCROLL]: state.autoScroll,
     [STORAGE_KEY_LIMIT_ENABLED]: state.limitEnabled,
     [STORAGE_KEY_LIMIT_MINUTES]: LIMIT_STEPS[state.limitIdx],
   }, () => render());
@@ -184,6 +190,9 @@ chrome.storage.local.get(
     }
     if (typeof data[PREF_KEYS.FEED_MUTED] === 'boolean') {
       state.muted = data[PREF_KEYS.FEED_MUTED] as boolean;
+    }
+    if (typeof data[PREF_KEYS.AUTO_SCROLL] === 'boolean') {
+      state.autoScroll = data[PREF_KEYS.AUTO_SCROLL] as boolean;
     }
     if (typeof data[STORAGE_KEY_LIMIT_ENABLED] === 'boolean') {
       state.limitEnabled = data[STORAGE_KEY_LIMIT_ENABLED] as boolean;
@@ -255,6 +264,12 @@ document.getElementById('vol-inc')!.addEventListener('click', () => {
 
 ui.muteToggle.addEventListener('click', () => {
   state.muted = !state.muted;
+  render();
+  save();
+});
+
+ui.autoscrollToggle.addEventListener('click', () => {
+  state.autoScroll = !state.autoScroll;
   render();
   save();
 });

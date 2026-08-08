@@ -23,6 +23,21 @@ if (speedDesc && speedDesc.configurable && speedDesc.get && speedDesc.set) {
   });
 }
 
+const defaultSpeedDesc = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'defaultPlaybackRate');
+if (defaultSpeedDesc && defaultSpeedDesc.configurable && defaultSpeedDesc.get && defaultSpeedDesc.set) {
+  Object.defineProperty(HTMLMediaElement.prototype, 'defaultPlaybackRate', {
+    get() { return defaultSpeedDesc.get!.call(this); },
+    set(val: number) {
+      if (!(window as any).__REELSLIDER_SETTING_SPEED__ && this instanceof HTMLVideoElement && this.hasAttribute(DOM_ATTRIBUTES_SCRUBBER_ACTIVE)) {
+        return; // Block Instagram from overwriting our speed
+      }
+      defaultSpeedDesc.set!.call(this, val);
+    },
+    configurable: true
+  });
+}
+
+
 // 2. Volume Lock
 const volDesc = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'volume');
 if (volDesc && volDesc.configurable && volDesc.get && volDesc.set) {

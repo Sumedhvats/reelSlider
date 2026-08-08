@@ -12,6 +12,7 @@ import { isSupportedPage, isFeedOrReels } from './routes';
 import { getVideoContext, isEditable } from './dom';
 import { injectPostDownloadButtons } from './download';
 import { showToast } from './ui';
+import { setupAutoScroll, loadAutoScrollPref, setAutoScrollEnabled, getAutoScrollEnabled } from './autoscroll';
 let observer: MutationObserver | null = null;
 let timeouts: number[] = [];
 
@@ -135,6 +136,9 @@ export function setupListeners() {
     if (!isEnabled) return;
     const detail = e.detail;
     if (!detail) return;
+    if (typeof detail.autoScrollPref === 'boolean') {
+      setAutoScrollEnabled(detail.autoScrollPref);
+    }
     const active = getGlobalActiveVideo();
     if (active) {
       if (typeof detail.speedPref === 'number') {
@@ -149,7 +153,11 @@ export function setupListeners() {
     const t = e.target as HTMLVideoElement;
     if (t && t.tagName === 'VIDEO' && t.hasAttribute(DOM_ATTRIBUTES.SCRUBBER_ACTIVE)) {
       const speed = getStoredSpeed();
-      if (Math.abs(t.playbackRate - speed) > 0.001) setSpeedWithLock(t, speed);
+      if (Math.abs(t.playbackRate - speed) > 0.001) {
+        setSpeedWithLock(t, speed);
+        e.stopImmediatePropagation();
+        e.stopPropagation();
+      }
       const vol = getStoredVolume();
       if (vol !== null && Math.abs(t.volume - vol) > 0.001) setVolumeWithLock(t, vol);
     }
@@ -157,6 +165,8 @@ export function setupListeners() {
 
   window.addEventListener('loadedmetadata', enforceMediaPrefs, true);
   window.addEventListener('play', enforceMediaPrefs, true);
+  window.addEventListener('ratechange', enforceMediaPrefs, true);
+
 
 
   const handleFullscreen = () => { if (isEnabled) runPatchLoop(); };
@@ -182,7 +192,7 @@ export function setupListeners() {
   document.addEventListener('keydown', (e) => {
     if (!isEnabled || isEditable(e.target)) return;
     const k = e.key.toLowerCase();
-    const isControl = ['a', 'd', 's', 'w', 'm', 'f', ' ', 'arrowleft', 'arrowright'].includes(k);
+    const isControl = ['a', 'd', 's', 'w', 'm', 'f', 'g', ' ', 'arrowleft', 'arrowright'].includes(k);
     if (!isControl) return;
     
     const active = getGlobalActiveVideo();
@@ -233,6 +243,11 @@ export function setupListeners() {
         if (document.fullscreenElement) document.exitFullscreen().catch(()=>{});
         else active.requestFullscreen().catch(()=>{});
       }
+      else if (k === 'g') {
+        const newVal = !getAutoScrollEnabled();
+        setAutoScrollEnabled(newVal);
+        showToast(newVal ? 'Auto-scroll: ON' : 'Auto-scroll: OFF');
+      }
     }
   }, true);
 
@@ -251,4 +266,8 @@ export function setupListeners() {
       }
     }
   }, true);
+
+  // Initialize autoscroll
+  loadAutoScrollPref();
+  setupAutoScroll();
 }

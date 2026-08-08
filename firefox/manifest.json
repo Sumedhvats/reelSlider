@@ -9,14 +9,14 @@
   },
   "background": {
     "scripts": [
-      "assets/index.ts-DIhxxs9B.js"
+      "assets/index.ts-Di0WlwVc.js"
     ],
     "type": "module"
   },
   "content_scripts": [
     {
       "js": [
-        "assets/locks.ts-D6hLRc4D.js",
+        "assets/locks.ts-D0rPSNK3.js",
         "assets/mute-fix.ts-1YPqpD4P.js"
       ],
       "matches": [
@@ -63,7 +63,7 @@
     "scripting",
     "downloads"
   ],
-  "version": "1.4.8",
+  "version": "1.4.9",
   "browser_specific_settings": {
     "gecko": {
       "id": "reelslider@sumedhvats",
@@ -76,10 +76,10 @@
         "https://www.instagram.com/*"
       ],
       "resources": [
-        "assets/locks.ts-D6hLRc4D.js",
+        "assets/locks.ts-D0rPSNK3.js",
         "assets/mute-fix.ts-1YPqpD4P.js",
         "assets/reels-timer.ts-B6SDxcWZ.js",
-        "assets/main.ts-BYxGVWbr.js",
+        "assets/main.ts-BRK9iGzj.js",
         "assets/constants-Dic-b4Xh.js",
         "assets/bridge.ts-Ciip8TBX.js"
       ]

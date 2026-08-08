@@ -1,19 +1,22 @@
 {
   "name": "reelslideroriginal",
   "private": true,
-  "version": "1.4.8",
+  "version": "1.4.9",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && cp -r _locales dist/",
     "build:firefox": "tsc && BROWSER=firefox vite build && cp -r _locales firefox/ && node -e \"const fs=require('fs');const p='firefox/manifest.json';const d=JSON.parse(fs.readFileSync(p));if(d.web_accessible_resources)d.web_accessible_resources.forEach(r=>delete r.use_dynamic_url);fs.writeFileSync(p,JSON.stringify(d,null,2))\"",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:e2e": "npm run build && vitest run"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.0.0-beta.33",
     "@types/chrome": "^0.2.2",
     "@types/node": "^26.1.2",
+    "puppeteer": "^25.5.0",
     "typescript": "~6.0.2",
-    "vite": "^8.1.1"
+    "vite": "^8.1.1",
+    "vitest": "^4.1.10"
   }
 }

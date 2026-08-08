@@ -83,6 +83,7 @@ export function setStoredSpeed(speed: number) {
 export function setSpeedWithLock(video: HTMLMediaElement, speed: number) {
   const w = window as any;
   w.__REELSLIDER_SETTING_SPEED__ = true;
+  video.defaultPlaybackRate = speed;
   video.playbackRate = speed;
   w.__REELSLIDER_SETTING_SPEED__ = false;
 }

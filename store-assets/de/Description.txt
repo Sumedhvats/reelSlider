@@ -1,24 +1,25 @@
 =========================================
-ReelSlider – Spulen, Geschwindigkeit, Download & Lautstärkeregelung für Instagram
+ReelSlider – Spulen, Geschwindigkeit, Auto-Scroll, Download & Lautstärkeregelung für Instagram
 =========================================
-Instagram bietet keine Möglichkeit, Reels zu spulen, zu verlangsamen oder herunterzuladen – ReelSlider löst genau dieses Problem. Füge eine echte Fortschrittsleiste, Geschwindigkeitsregelung, Medien-Download und Lautstärkespeicher zu jedem Reel, Story, Feed-Beitrag und Video auf Instagram hinzu.
-
-Egal ob du ein langsames Reel beschleunigen, ein Foto-Karussell in hoher Qualität herunterladen, einen schnellen Sprecher verlangsamen oder in einer langen Story vorspulen möchtest: ReelSlider gibt Instagram dieselben Steuerungselemente, die du von YouTube und Netflix kennst – 100% kostenlos, ohne Konto und ohne Datenerfassung.
+Instagram bietet keine Möglichkeit, Reels zu spulen, automatisch weiterzuscrollen, zu verlangsamen oder herunterzuladen – ReelSlider löst genau dieses Problem. Füge eine echte Fortschrittsleiste, Geschwindigkeitsregelung, Auto-Scroll, Medien-Download und Lautstärkespeicher zu jedem Reel, Story, Feed-Beitrag und Video auf Instagram hinzu.
 
 ✦ WARUM MENSCHEN REELSLIDER INSTALLIEREN
 -----------------------------------------
+• Freihändige Wiedergabe? Auto-Scroll Reels scrollt automatisch zum nächsten Reel, wenn das aktuelle Video endet (standardmäßig EIN, umschaltbar via Popup oder 'G'-Taste).
 • Du kannst Instagram Reels nicht spulen? Klicke oder ziehe auf der Zeitleiste, um an eine beliebige Stelle im Video zu springen.
 • Möchtest du Beiträge und Videos speichern? Eine native Download-Schaltfläche lädt jedes Reel, Video oder Foto in bester Qualität direkt auf dein Gerät herunter.
 • Möchtest du Instagram Reels beschleunigen oder verlangsamen? Stelle die Wiedergabegeschwindigkeit von 0,25x bis 2,0x ein – wird beim nächsten Mal automatisch gemerkt.
+• Mehrsprachige Unterstützung? Automatische Spracherkennung passt sich deiner Instagram-Sprache an (Deutsch, Englisch, Spanisch, Französisch, Portugiesisch, Türkisch).
 • Genervt, dass Instagram beim Scrollen die Lautstärke zurücksetzt? Lege eine benutzerdefinierte Standardlautstärke fest, die dauerhaft erhalten bleibt.
-• Stört es dich, dass der Ton beim Scrollen wieder angeht? Der Stummschaltungsspeicher behält deine Stummschaltungs-Wahl bei.
 • Zu viel Zeit auf Instagram? Setze ein tägliches Nutzungslimit mit automatischer Pause-Bildschirmanzeige.
 
 ✦ HAUPTMERKMALE
 -----------------------------------------
+• Auto-Scroll Reels – Automatisch zum nächsten Reel scrollen, wenn das Video endet (standardmäßig EIN).
 • Spulen & Scrubben – Klicke oder ziehe die Zeitleiste auf jedem Reel, Story, Feed-Beitrag oder Profil-Video.
 • Ein-Klick-Download – Lade Videos und Fotos sofort in hoher Qualität herunter.
 • Geschwindigkeitsregelung – Stelle die Geschwindigkeit von 0,25x bis 2,0x ein, automatisch gespeichert.
+• Mehrsprachige Erkennung – Automatische Spracherkennung & manueller Sprachwähler (DE, EN, ES, FR, PT, TR).
 • Eigene Standardlautstärke – Lege deine bevorzugte Lautstärke einmalig fest.
 • Stummschaltungsspeicher – Deine Mute-Einstellung bleibt beim Scrollen erhalten.
 • Tägliches Nutzungslimit – Behalte deine Bildschirmzeit im Blick.
@@ -33,6 +34,7 @@ Egal ob du ein langsames Reel beschleunigen, ein Foto-Karussell in hoher Qualit�
 • [Shift+S] Halten für temporäre 0,5x Mindestgeschwindigkeit
 • [M] Stummschalten / Ton einschalten
 • [F] Vollbildmodus umschalten
+• [G] Auto-Scroll umschalten (EIN / AUS)
 
 ✦ 100% KOSTENLOS & OPEN SOURCE – KEINE DATENERFASSUNG
 -----------------------------------------

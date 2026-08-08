@@ -1,24 +1,25 @@
 =========================================
-ReelSlider – Linha do Tempo, Velocidade, Download e Controle de Volume para Instagram
+ReelSlider – Linha do Tempo, Velocidade, Auto-Scroll, Download e Controle de Volume para Instagram
 =========================================
-O Instagram não permite pausar, avançar, desacelerar ou baixar um Reel — o ReelSlider resolve isso. Adicione uma barra de progresso real, controle de velocidade, download de mídia e memória de volume a cada Reel, Story, post do Feed e vídeo no Instagram.
-
-Seja para acelerar um Reel lento, baixar um carrossel de fotos em alta qualidade, desacelerar uma fala rápida ou avançar em um Story longo, o ReelSlider dá ao Instagram os mesmos controles que você já usa no YouTube e Netflix — 100% gratuito, sem conta e sem coleta de dados.
+O Instagram não permite pausar, avançar, rolar automaticamente, desacelerar ou baixar um Reel — o ReelSlider resolve isso. Adicione uma barra de progresso real, controle de velocidade, auto-scroll, download de mídia e memória de volume a cada Reel, Story, post do Feed e vídeo no Instagram.
 
 ✦ POR QUE INSTALAR O REELSLIDER
 -----------------------------------------
+• Assistir sem as mãos? O Auto-scroll Reels passa automaticamente para o próximo Reel quando o vídeo atual termina (LIGADO por padrão, alternável pelo popup ou tecla 'G').
 • Não consegue avançar ou voltar nos Reels do Instagram? Clique ou arraste a linha do tempo para ir a qualquer segundo do vídeo.
 • Quer salvar posts e vídeos? Um botão de download nativo baixa a versão em mais alta qualidade de qualquer Reel, vídeo ou foto direto no seu dispositivo.
 • Quer acelerar ou desacelerar um Reel? Defina a velocidade de 0.25x a 2.0x — salva automaticamente para a próxima vez.
+• Suporte Multilíngue? Detecção automática do idioma do seu Instagram (Português, Inglês, Alemão, Espanhol, Francês, Turco).
 • Cansado do Instagram resetar seu volume a cada rolagem? Defina um volume padrão personalizado que permanece entre as sessões.
-• Incomodado com o som ativando sozinho ao rolar? A memória de mudo mantém sua escolha de ativar ou desativar o áudio.
 • Passando tempo demais no Instagram? Defina um limite diário de uso com uma tela de pausa automática.
 
 ✦ RECURSOS PRINCIPAIS
 -----------------------------------------
+• Auto-scroll Reels — rola automaticamente para o próximo Reel ao finalizar o vídeo (LIGADO por padrão).
 • Linha do Tempo e Avanço — clique ou arraste em qualquer Reel, Story, post do Feed ou vídeo de perfil.
 • Downloads com um clique — baixe vídeos e fotos em alta qualidade instantaneamente.
 • Controle de Velocidade — ajuste de 0.25x a 2.0x, salvo automaticamente.
+• Detecção Multilíngue Automática — seleção automática e manual de idioma (PT, EN, DE, ES, FR, TR).
 • Volume Padrão Personalizado — defina seu volume preferido apenas uma vez.
 • Memória de Mudo — sua preferência de áudio continua enquanto você rola.
 • Limite Diário no Instagram — controle seu tempo de tela com um limite configurável.
@@ -33,6 +34,7 @@ Seja para acelerar um Reel lento, baixar um carrossel de fotos em alta qualidade
 • [Shift+S] Segure para velocidade lenta temporária de 0.5x
 • [M] Mutar / Desmutar áudio
 • [F] Alternar tela cheia
+• [G] Alternar Auto-scroll (ON / OFF)
 
 ✦ 100% GRATUITO E CÓDIGO ABERTO — ZERO COLETA DE DADOS
 -----------------------------------------

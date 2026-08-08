@@ -1,24 +1,25 @@
 =========================================
-ReelSlider – Barre de Lecture, Vitesse, Téléchargement et Volume pour Instagram
+ReelSlider – Barre de Lecture, Vitesse, Défilement Auto, Téléchargement et Volume pour Instagram
 =========================================
-Instagram ne permet pas d'avancer, ralentir ou télécharger un Reel — ReelSlider résout ce problème. Ajoutez une vraie barre de progression, le contrôle de vitesse, le téléchargement et la mémoire du volume à chaque Reel, Story, post du Fil et vidéo sur Instagram.
-
-Que vous souhaitiez accélérer un Reel trop lent, télécharger un carrousel de photos en haute qualité, ralentir une vidéo ou avancer dans une longue Story, ReelSlider donne à Instagram les mêmes contrôles que YouTube et Netflix — 100% gratuit, sans compte et sans collecte de données.
+Instagram ne permet pas d'avancer, défiler automatiquement, ralentir ou télécharger un Reel — ReelSlider résout ce problème. Ajoutez une vraie barre de progression, le contrôle de vitesse, le défilement automatique, le téléchargement et la mémoire du volume à chaque Reel, Story, post du Fil et vidéo sur Instagram.
 
 ✦ POURQUOI INSTALLER REELSLIDER
 -----------------------------------------
+• Visionnage mains libres ? Le défilement automatique des Reels passe automatiquement au Reel suivant à la fin de la vidéo (ACTIVÉ par défaut, basculable via popup ou touche 'G').
 • Impossible d'avancer ou reculer sur les Reels Instagram ? Cliquez ou faites glisser la ligne du temps pour aller à n'importe quel moment de la vidéo.
 • Vous voulez enregistrer des posts et vidéos ? Un bouton de téléchargement natif enregistre la meilleure qualité de n'importe quel Reel, vidéo ou photo directement sur votre appareil.
 • Vous voulez accélérer ou ralentir un Reel ? Réglez la vitesse de lecture de 0.25x à 2.0x — sauvegardée automatiquement.
+• Support multilingue ? Détection automatique selon la langue de votre Instagram (Français, Anglais, Allemand, Espagnol, Portugais, Turc).
 • Marre qu'Instagram réinitialise le volume à chaque défilement ? Définissez un volume par défaut personnalisé qui reste d'une session à l'autre.
-• Agacé par le son qui se réactive seul ? La mémoire de sourdine conserve votre choix de couper ou réactiver le son.
 • Vous passez trop de temps sur Instagram ? Définissez une limite quotidienne d'utilisation avec un écran de pause automatique.
 
 ✦ FONCTIONNALITÉS PRINCIPALES
 -----------------------------------------
+• Défilement automatique Reels — passe automatiquement au Reel suivant à la fin de la vidéo (ACTIVÉ par défaut).
 • Barre de progression et défilement — cliquez ou faites glisser sur Reels, Stories et posts.
 • Téléchargement en un clic — téléchargez instantanément vidéos et photos en haute qualité.
 • Contrôle de vitesse — de 0.25x à 2.0x, sauvegardé automatiquement.
+• Détection multilingue automatique — détection intelligente & sélecteur manuel de langue (FR, EN, DE, ES, PT, TR).
 • Volume par défaut — définissez votre volume préféré une fois pour toutes.
 • Mémoire de sourdine — conserve votre préférence sonore lorsque vous faites défiler.
 • Limite quotidienne Instagram — définissez un temps de visionnage quotidien personnalisé.
@@ -33,6 +34,7 @@ Que vous souhaitiez accélérer un Reel trop lent, télécharger un carrousel de
 • [Shift+S] Maintenir pour vitesse lente temporaire de 0.5x
 • [M] Couper / Activer le son
 • [F] Basculer en plein écran
+• [G] Basculer le défilement automatique (ON / OFF)
 
 ✦ 100% GRATUIT & OPEN SOURCE — AUCUNE COLLECTE DE DONNÉES
 -----------------------------------------

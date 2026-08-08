@@ -1,24 +1,25 @@
 =========================================
-ReelSlider – Instagram için İlerleme Çubuğu, Hız, İndirme ve Ses Kontrolü
+ReelSlider – Instagram için İlerleme Çubuğu, Hız, Otomatik Kaydırma, İndirme ve Ses Kontrolü
 =========================================
-Instagram Reels videolarını sarmanıza, yavaşlatmanıza veya indirmenize izin vermez — ReelSlider bunu çözer. Instagram'daki her Reel, Hikaye, Akış gönderisi ve video için gerçek bir ilerleme çubuğu, oynatma hızı kontrolü, medya indirme ve ses hafızası ekleyin.
-
-Yavaş bir Reel'ı hızlandırmak, yüksek kaliteli bir fotoğraf karuselini indirmek, hızlı konuşan birini yavaşlatmak veya uzun bir Hikayeyi ileri sarmak istiyorsanız, ReelSlider Instagram'a YouTube ve Netflix'te bulunan kontrol özelliklerini kazandırır — tamamen ücretsiz, hesap gerektirmeden ve veri toplamadan.
+Instagram Reels videolarını sarmanıza, otomatik kaydırmanıza, yavaşlatmanıza veya indirmenize izin vermez — ReelSlider bunu çözer. Instagram'daki her Reel, Hikaye, Akış gönderisi ve video için gerçek bir ilerleme çubuğu, oynatma hızı kontrolü, otomatik kaydırma, medya indirme ve ses hafızası ekleyin.
 
 ✦ NEDEN REELSLIDER KULLANMALISINIZ?
 -----------------------------------------
+• Ellerinizi Kullanmadan İzleyin! Otomatik Kaydırma (Auto-scroll Reels), mevcut video bittiğinde otomatik olarak bir sonraki Reel'a geçer (varsayılan olarak AÇIK, popup veya 'G' tuşu ile açılıp kapatılabilir).
 • Instagram Reels videolarında ileri/geri saramıyor musunuz? Videonun istediğiniz saniyesine atlamak için zaman çizelgesine tıklayın veya sürükleyin.
 • Gönderileri ve videoları kaydetmek mi istiyorsunuz? Yerleşik indirme düğmesi her Reel, video veya fotoğraf gönderisini cihazınıza yüksek kalitede indirir.
 • Reels videolarını hızlandırmak veya yavaşlatmak mı istiyorsunuz? Oynatma hızını 0.25x ile 2.0x arasında ayarlayın — bir sonraki kullanımda otomatik hatırlanır.
+• Çoklu Dil Desteği? Akıllı otomatik algılama, Instagram diliyle otomatik eşleşir (Türkçe, İngilizce, Almanca, İspanyolca, Fransızca, Portekizce).
 • Instagram'ın her kaydırmada sesi sıfırlamasından sıkıldınız mı? Oturumlar arasında geçerli olan özel bir varsayılan ses seviyesi belirleyin.
-• Kaydırırken sesin kendiliğinden açılmasından rahatsız mısınız? Sessize alma hafızası, ses tercihinizi korur.
 • Instagram'da çok mu zaman harcıyorsunuz? Otomatik duraklatma ekranına sahip Günlük Instagram Limiti belirleyin.
 
 ✦ ÖNE ÇIKAN ÖZELLİKLER
 -----------------------------------------
+• Otomatik Kaydırma (Auto-scroll Reels) — video bittiğinde otomatik olarak bir sonraki Reel'a geçer (varsayılan AÇIK).
 • Sarma ve İlerleme Çubuğu — Reels, Hikayeler, Akış ve Profil videolarında tıklayın veya sürükleyin.
 • Tek Tıkla İndirme — yüksek kaliteli video ve fotoğrafları anında cihazınıza indirin.
 • Oynatma Hızı Kontrolü — 0.25x ile 2.0x arasında ayarlayın, otomatik kaydedilir.
+• Çoklu Dil Algılama — akıllı otomatik algılama ve manuel dil seçici (TR, EN, DE, ES, FR, PT).
 • Özel Varsayılan Ses — tercih ettiğiniz ses seviyesini bir kez ayarlayın.
 • Sessize Alma Hafızası — kaydırdıkça ses tercihiniz korunur.
 • Günlük Instagram Limiti — kullanım sürenizi yönetin.
@@ -33,6 +34,7 @@ Yavaş bir Reel'ı hızlandırmak, yüksek kaliteli bir fotoğraf karuselini ind
 • [Shift+S] Geçici 0.5x yavaş hız için basılı tutun
 • [M] Sesi Kapat / Aç
 • [F] Tam ekran moduna geç
+• [G] Otomatik kaydırmayı aç / kapat (AÇIK / KAPALI)
 
 ✦ %100 ÜCRETSİZ VE AÇIK KAYNAK — VERİ TOPLANMAZ
 -----------------------------------------

@@ -1,1 +1,1 @@
-Real video controls on Instagram. Seek, volume & speed on reels, stories, feed & posts.
+Real video controls on Instagram. Seek, volume, speed, auto-scroll & downloader for Reels, Stories & Posts.
